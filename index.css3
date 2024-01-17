@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: #eceadd;
-}
-
 nav {
   padding: 0px 135px 0px 135px;
   display: flex;
@@ -69,9 +65,10 @@ nav .nav-tags a {
 }
 .section1 {
   padding: 100px 135px 50px 135px;
+  margin-top: 30px;
   display: flex;
   flex-direction: row;
-  background: linear-gradient(to bottom right, #eceadd 0%, #eceadd 40%, #193282 100%);
+  background: linear-gradient(45deg, #eceadd, #193282);
 }
 .section1 div:nth-child(1) h1 {
   color: #193282;
@@ -97,7 +94,7 @@ nav .nav-tags a {
   width: 400px;
   height: 40px;
   border-radius: 10px;
-  border: 2px solid #ff7c47;
+  border: 1px solid #ff7c47;
 }
 .section1 div:nth-child(1) #search-btn {
   width: 90px;
@@ -106,7 +103,7 @@ nav .nav-tags a {
   font-size: 18px;
   border-radius: 10px;
   background-color: #ff7c47;
-  border: 2px solid #cb3e07;
+  border: 1px solid #ff7c47;
   transition: all 0.3s ease-in-out;
 }
 .section1 div:nth-child(1) #search-btn:hover {
@@ -126,81 +123,4 @@ nav .nav-tags a {
   border-radius: 100px;
 }
 
-.section2 {
-  padding: 50px 135px 0px 135px;
-  background-color: #193282;
-}
-.section2 .services {
-  display: flex;
-  flex-direction: row;
-  justify-content: right;
-  align-items: center;
-  gap: 25px;
-}
-.section2 .services .service-1 {
-  background-image: url("/img/car-img.png");
-}
-.section2 .services .service-2 {
-  background-image: url("/img/car-img.png");
-}
-.section2 .services .service-3 {
-  background-image: url("/img/car-img.png");
-}
-.section2 .services .service {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 250px;
-  height: 300px;
-  border-radius: 10%;
-  border: 5px solid white;
-  transition: all 0.3s ease-in-out;
-}
-.section2 .services .service h2 {
-  position: relative;
-  top: 200px;
-}
-.section2 .services .service p {
-  position: relative;
-  top: 210px;
-}
-.section2 .services .service:hover {
-  transform: scale(1.05);
-  cursor: pointer;
-}
-.section2 .services .service-learmore p:nth-child(1) {
-  color: white;
-  font-family: "Oswald", sans-serif;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 60px; /* 111.111% */
-}
-.section2 .services .service-learmore p:nth-child(2) {
-  color: white;
-  margin-top: 20px;
-  font-family: "DM Sans", serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  width: 250px;
-}
-.section2 .services .service-learmore button {
-  color: white;
-  margin-top: 40px;
-  font-family: "DM Sans", serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  border-radius: 10px;
-  background-color: #ff7c47;
-  padding: 5px 10px 5px 10px;
-  transition: all 0.3s ease-in-out;
-  border: 2px solid #cb3e07;
-}
-.section2 .services .service-learmore button:hover {
-  cursor: pointer;
-  transform: translateX(20px) scale(1.1);
-}
-
-/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=index.css3.map */
