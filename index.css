@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: #eceadd;
-}
-
 nav {
   padding: 0px 135px 0px 135px;
   display: flex;
@@ -15,6 +11,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   height: 100px;
+  background: linear-gradient(to bottom, #eceadd 0%, #eceadd 100%);
 }
 nav .logo-div {
   display: flex;
@@ -68,10 +65,10 @@ nav .nav-tags a {
   }
 }
 .section1 {
-  padding: 100px 135px 50px 135px;
+  padding: 100px 135px 0px 135px;
   display: flex;
   flex-direction: row;
-  background: linear-gradient(to bottom right, #eceadd 0%, #eceadd 40%, #193282 100%);
+  background: linear-gradient(to bottom, #eceadd 40%, rgba(25, 49, 130, 0.8588235294) 100%);
 }
 .section1 div:nth-child(1) h1 {
   color: #193282;
@@ -96,7 +93,7 @@ nav .nav-tags a {
   padding: 10px 20px 10px 20px;
   width: 400px;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 30px;
   border: 2px solid #ff7c47;
 }
 .section1 div:nth-child(1) #search-btn {
@@ -104,7 +101,7 @@ nav .nav-tags a {
   height: 40px;
   color: white;
   font-size: 18px;
-  border-radius: 10px;
+  border-radius: 30px;
   background-color: #ff7c47;
   border: 2px solid #cb3e07;
   transition: all 0.3s ease-in-out;
@@ -128,7 +125,7 @@ nav .nav-tags a {
 
 .section2 {
   padding: 50px 135px 0px 135px;
-  background-color: #193282;
+  background: linear-gradient(to bottom, rgba(25, 49, 130, 0.8588235294) 0%, #193282 100%);
 }
 .section2 .services {
   display: flex;
@@ -138,40 +135,60 @@ nav .nav-tags a {
   gap: 25px;
 }
 .section2 .services .service-1 {
-  background-image: url("/img/car-img.png");
-}
-.section2 .services .service-2 {
-  background-image: url("/img/car-img.png");
-}
-.section2 .services .service-3 {
-  background-image: url("/img/car-img.png");
-}
-.section2 .services .service {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   width: 250px;
   height: 300px;
+}
+.section2 .services .service-2 {
+  width: 220px;
+  height: 280px;
+}
+.section2 .services .service-2 p {
+  font-size: 16px;
+}
+.section2 .services .service-3 {
+  width: 200px;
+  height: 250px;
+}
+.section2 .services .service-3 p {
+  font-size: 14px;
+}
+.section2 .services .service {
+  padding: 2.6%;
   border-radius: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   border: 5px solid white;
   transition: all 0.3s ease-in-out;
+  background-color: #193282;
 }
 .section2 .services .service h2 {
-  position: relative;
-  top: 200px;
+  color: white;
+  font-weight: 600;
+  margin-top: 20%;
 }
 .section2 .services .service p {
-  position: relative;
-  top: 210px;
+  color: rgba(255, 255, 255, 0.848);
+}
+.section2 .services .service img {
+  width: 100px;
+  height: 70px;
+  border-radius: 10%;
 }
 .section2 .services .service:hover {
   transform: scale(1.05);
   cursor: pointer;
+  background-color: #1e3da3;
+}
+.section2 .services .service-learmore {
+  width: 230px;
+  height: 250px;
 }
 .section2 .services .service-learmore p:nth-child(1) {
   color: white;
   font-family: "Oswald", sans-serif;
-  font-size: 40px;
+  font-size: 36px;
   font-style: normal;
   font-weight: 700;
   line-height: 60px; /* 111.111% */
@@ -180,19 +197,20 @@ nav .nav-tags a {
   color: white;
   margin-top: 20px;
   font-family: "DM Sans", serif;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   width: 250px;
 }
 .section2 .services .service-learmore button {
   color: white;
+  height: 40px;
   margin-top: 40px;
   font-family: "DM Sans", serif;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
-  border-radius: 10px;
+  border-radius: 30px;
   background-color: #ff7c47;
   padding: 5px 10px 5px 10px;
   transition: all 0.3s ease-in-out;
@@ -201,6 +219,319 @@ nav .nav-tags a {
 .section2 .services .service-learmore button:hover {
   cursor: pointer;
   transform: translateX(20px) scale(1.1);
+}
+
+.section3 {
+  padding: 100px 135px 0px 135px;
+  height: 900px;
+  background: linear-gradient(to bottom, #193282 0%, #0f1734 100%);
+  border-radius: 0 0 80px 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 50px;
+}
+.section3 .special-package {
+  padding: 50px 0px 50px 20px;
+  flex: 0 0 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+.section3 .special-package h1 {
+  color: #eceadd;
+  font-family: "DM Sans", serif;
+  font-size: 70px;
+  font-style: normal;
+  font-weight: bolder;
+  line-height: 60px;
+  width: 100%;
+}
+.section3 .special-package p {
+  color: white;
+  font-family: "DM Sans", serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 30px;
+}
+.section3 .special-package button {
+  color: white;
+  height: 40px;
+  margin-top: 10px;
+  position: relative;
+  left: -130px;
+  font-family: "DM Sans", serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  border-radius: 30px;
+  border: 2px solid #cb3e07;
+  background-color: #ff7c47;
+  padding: 5px 10px 5px 10px;
+  transition: all 0.3s ease-in-out;
+}
+.section3 .special-package button:hover {
+  cursor: pointer;
+  transform: translateX(20px) scale(1.1);
+}
+.section3 .packages {
+  height: 400px;
+  width: 100%;
+  border-radius: 30px;
+  border: 5px solid white;
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+}
+.section3 .packages .pac1 {
+  display: flex;
+  flex-direction: column;
+}
+.section3 .packages .pac1 img {
+  border-radius: 30px;
+  width: 100%;
+  height: 300px;
+}
+.section3 .packages .pac1 > div {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.section3 .packages .pac1 > div h2 {
+  color: #193282;
+  font-family: "DM Sans", serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+}
+.section3 .packages .pac1 > div p {
+  color: rgba(0, 0, 255, 0.566);
+}
+.section3 .packages .pac1 > div button {
+  color: white;
+  height: 40px;
+  font-family: "DM Sans", serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  border-radius: 30px;
+  border: 2px solid #cb3e07;
+  background-color: #ff7c47;
+  padding: 5px 10px 5px 10px;
+  transition: all 0.3s ease-in-out;
+}
+.section3 .packages .pac1 > div button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.section4 {
+  height: 600px;
+  border-radius: 50px;
+  margin: -280px 135px 0px 135px;
+  border: 8px solid white;
+  background-color: #7592fb;
+  box-sizing: border-box;
+}
+.section4 div {
+  padding: 50px 80px 80px 80px;
+}
+.section4 div p {
+  color: white;
+  margin-bottom: 30px;
+  font-family: "DM Sans", serif;
+  font-size: 60px;
+  font-weight: bolder;
+  text-align: center;
+}
+.section4 div .hotels-btn {
+  color: white;
+  height: 50px;
+  width: 130px;
+  margin-left: 80px;
+  font-family: "DM Sans", serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  border-radius: 30px;
+  border: 2px solid white;
+  background-color: transparent;
+  padding: 5px 10px 5px 10px;
+  transition: all 0.3s ease-in-out;
+}
+.section4 div .viewall-btn {
+  color: white;
+  height: 50px;
+  width: 130px;
+  margin-left: 30px;
+  font-family: "DM Sans", serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  border-radius: 30px;
+  border: 2px solid #cb3e07;
+  background-color: #ff7c47;
+  padding: 5px 10px 5px 10px;
+  transition: all 0.3s ease-in-out;
+}
+.section4 div button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.section5 {
+  height: 500px;
+  border-radius: 50px;
+  margin: -230px 270px 0px 270px;
+  border: 8px solid white;
+  background-color: white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+}
+.section5 img {
+  height: 500px;
+  width: 600px;
+  border-radius: 50px;
+}
+.section5 div {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+.section5 div .exclusive {
+  margin-bottom: 20px;
+  margin-left: 10px;
+  font-size: 26px;
+  color: #193282;
+  font-family: "DM Sans", serif;
+  font-weight: bolder;
+}
+.section5 div .price {
+  color: #ff7c47;
+  font-family: "DM Sans", serif;
+  font-weight: bolder;
+  font-size: 50px;
+}
+.section5 div .price span {
+  color: #193282;
+  font-size: 26px;
+}
+.section5 div > div {
+  margin-top: 10px;
+  margin-left: -20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #193282;
+  font-size: 18px;
+  font-family: "DM Sans", serif;
+  font-weight: bolder;
+}
+.section5 div > div i {
+  border: #193282 1px solid;
+  padding: 3px;
+  border-radius: 50%;
+}
+.section5 div button {
+  margin-top: 30px;
+  margin-left: -150px;
+  border: none;
+  color: #ff7c47;
+  background-color: transparent;
+  font-family: "DM Sans", serif;
+  font-weight: bolder;
+  font-size: 16px;
+}
+.section5 div button:hover {
+  cursor: pointer;
+}
+
+footer {
+  height: 280px;
+  width: 100%;
+  background: linear-gradient(to right, #0e1837 0%, #0a1229 70%, #31213b 100%);
+  padding: 100px 135px 0px 135px;
+  display: flex;
+  flex-direction: column;
+}
+footer .footer1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  letter-spacing: 2px;
+}
+footer .footer1 h1 {
+  font-family: "DM Serif Display", "sans-serif";
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 700;
+  background-image: linear-gradient(135deg, #091adb, #c04316);
+  background-clip: text;
+  color: transparent;
+}
+footer .footer1 h1:hover {
+  background-image: linear-gradient(135deg, #9f0692, #c80909);
+}
+footer .footer1 ul {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  font-size: 16px;
+  font-family: "DM Sans", serif;
+  margin-left: 60px;
+}
+footer .footer1 ul li {
+  list-style: none;
+}
+footer .footer1 ul a {
+  text-decoration: none;
+  color: white;
+}
+footer .footer1 div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: "DM Sans", serif;
+  font-size: 16px;
+  color: white;
+}
+footer .socials {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+footer .socials img {
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s ease-in-out;
+  padding: 10px;
+  color: white;
+  border: 1px solid white;
+  border-radius: 8px;
+}
+
+@keyframes slideUp {
+  0% {
+    margin-bottom: -300px;
+    opacity: 0;
+  }
+  100% {
+    margin-bottom: 0;
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
