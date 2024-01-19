@@ -1,0 +1,403 @@
+$light-blue : #8ecae6;
+$dark-blue : #219ebc ;
+$tan-blue : #023047 ;
+$light-orange : #ffb703 ;
+$dark-orange : #fb8500 ;
+$dm_serif : 'DM Serif Display',"sans-serif" ;
+$dm_sans : 'DM Sans', serif;
+$Oswald : 'Oswald',sans-serif;
+
+$blue : #193282 ;
+$pink : #eceadd;
+$orange : #ff7c47 ;
+
+
+body{
+    background-color: #eceadd;
+}
+nav{
+    padding: 0px 135px 0px 135px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    background: linear-gradient(to right , #eceadd 0%,#eceadd 100%);
+    .logo-div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 40px;
+        font-family: $dm_serif ;
+        letter-spacing: 2px;
+        h1 {
+            text-decoration: none;
+            background-image:  linear-gradient(135deg, #091adb, #c04316);
+            background-clip: text;
+            color: transparent;
+        }
+        h1:hover{
+            background-image:  linear-gradient(135deg, #9f0692 , #c80909);
+        }
+        .logo-img{
+            width: 80px;
+            height: 80px;
+        }
+    }
+    .nav-tags{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 50px;
+        font-family: $dm_serif ;
+        font-size: 18px;
+        margin-top: 20px;
+        li{
+            list-style: none;
+        }
+        li:hover {
+            animation: wave 0.5s 0s infinite  ;
+        }
+        a{
+            text-decoration: none;
+        }
+    }
+}
+@keyframes wave {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    25%{
+        transform: translateY(-2px);
+    }
+    75%{
+        transform: translateY(-2px);
+    }
+}
+#greet{
+    margin: 50px 135px 0px 135px;
+    text-align: center;
+    text-decoration: none;
+    background-image:  linear-gradient(135deg, #091adb, #c04316);
+    background-clip: text;
+    color: transparent;
+}
+.global-sales{
+    margin: 20px 135px 0px 135px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 150px;
+    img{
+        width: 400px;
+        border-radius: 50px;
+        margin-top: 50px;
+        // flex-grow: 1;
+    }
+    >div{
+        flex-grow: 2;
+        h1 {
+            text-decoration: none;
+            background-image:  linear-gradient(135deg, #091adb, #c04316);
+            background-clip: text;
+            color: transparent;
+        }
+        table {
+            border-collapse: collapse;
+            border-radius: 30px;
+            width: 100%;
+            margin-top: 20px;
+            tr>#us{
+                width: 10px;
+                height: 10px;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                text-align: left;
+                padding: 10px;
+            }
+            th {
+                background-color: #0083d0 ;
+            }
+            tbody{
+                background-color: $pink;
+            }
+        }
+    }
+}
+
+.status{
+    padding: 50px 135px 0px 135px;
+    // padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+    img{
+        width: 340px;
+        height: 200px;
+        border-radius: 20px;
+        position: relative;
+        top: -15px;
+        transition: all 0.3s ease-in;
+    }
+    img:hover {
+        transform: translateY(-15px);
+        cursor: pointer;
+    }
+    div{
+        padding: 0px 20px 30px 20px;
+        background-color: white;
+        border-radius: 10px;
+        h3{
+            font-family: $dm_serif;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: $blue;
+        }
+        hr{
+            margin-bottom: 5px;
+        }
+        p{
+            font-family: $dm_serif;
+            font-size: 16px;
+            color: rgb(49, 46, 46);
+        }
+    }
+}
+
+    // display: flex;
+    // flex-direction: row;
+
+    // gap: 50px;
+    // .updateForm{
+    //     display: flex;
+    //     flex-direction: column;
+    //     gap: 16px;
+    //     padding: 20px;
+    //     background-color: $light-blue;
+    //     border-radius: 10px;
+    //     border: 2px solid black;
+    //     width: 400px;
+    //     h2{
+    //         font-family: $dm_serif;
+    //         font-size: 25px;
+    //         color: $blue
+    //     }
+    //     input{
+    //         border-radius: 3px;
+    //         border: none;
+    //         padding: 0px 0px 0px 10px;
+    //         height: 28px;
+    //     }
+    //     >div{
+    //         display: flex;
+    //         flex-direction: row;
+    //         justify-content: space-around;
+    //     }
+    //     button{
+    //         width: 150px;
+    //         height: 30px;
+    //         color: white;
+    //         border: 1px solid $blue;
+    //         border-radius: 10px;
+    //         display: inline;
+    //         padding: 4px 8px;
+    //         cursor: pointer;
+    //         background-color: $tan-blue ;
+    //         transition: all 0.3s ease-in;
+    //     }
+    //     button:hover{
+    //         cursor: pointer;
+    //         transform: scale(1.05);
+    //     }
+    // }
+    .destination-list{
+        margin: 50px 50px 0px 50px;
+        height: auto;
+        background-image:  linear-gradient(135deg, #091adb, #c04316);
+        border-radius: 20px;
+        padding: 30px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 26px;
+        height: auto;
+        .card{
+            background-color: $pink;
+            border-radius: 20px;
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            img{
+                border-radius: 20px 20px 0 0;
+                width: 250px;
+                height: 300px;
+            }
+            .card-body{
+                background-color: $pink;
+                border-radius: 0 0 20px 20px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 10px;
+                align-items: center;
+                .details{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 3px;
+                    .card-strikethroughprice {
+                        text-decoration: line-through;
+                        color: red;
+                    }
+                    .card-offerPrice {
+                        color: red;
+                    }
+                }
+                .edit-buttons{
+                    display: flex ;
+                    flex-direction: column ;
+                    gap: 10px ;
+                    button{
+                        color: white;
+                        padding: 4px 16px;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+                    button:hover{
+                        cursor: pointer;
+                    }
+                    .edit{
+                        color: red;
+                    }
+                    .delete{
+                        background-color: red;
+                        color: white;
+                    }
+                }
+            }
+        }
+        
+    }
+
+
+
+.admin-container2{
+    display: flex;
+    flex-direction: row;
+    margin: 50px 50px 0px 50px;
+    gap: 50px;
+    .updateForm{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px;
+        background-color: $light-orange ;
+        border-radius: 10px;
+        border: 2px solid black;
+        width: 400px;
+        h2{
+            font-family: $dm_serif;
+            font-size: 25px;
+            color: $blue
+        }
+        input{
+            border-radius: 3px;
+            border: none;
+            padding: 0px 0px 0px 10px;
+            height: 28px;
+        }
+        >div{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        button{
+            width: 150px;
+            height: 30px;
+            color: white;
+            border: 1px solid $blue;
+            border-radius: 10px;
+            display: inline;
+            padding: 4px 8px;
+            cursor: pointer;
+            background-color: $tan-blue ;
+            transition: all 0.3s ease-in;
+        }
+        button:hover{
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+    }
+    .package-list{
+        background-color: $dark-orange ;
+        border-radius: 20px;
+        padding: 30px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 26px;
+        height: auto;
+        .card{
+            background-color: $pink;
+            border-radius: 20px;
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            img{
+                border-radius: 20px 20px 0 0;
+                width: 200px;
+                height: 200px;
+            }
+            .card-body{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 10px;
+                align-items: center;
+                .details{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 3px;
+                    .card-strikethroughprice {
+                        text-decoration: line-through;
+                        color: red;
+                    }
+                    .card-offerPrice {
+                        color: red;
+                    }
+                }
+                .edit-buttons{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+        
+                    button{
+                        color: white;
+                        padding: 4px 8px;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+                    button:hover{
+                        cursor: pointer;
+                    }
+                    .edit{
+                        color: red;
+                    }
+                    .delete{
+                        background-color: red;
+                        color: white;
+        
+                    }
+                }
+            }
+        }
+        
+    }
+}
