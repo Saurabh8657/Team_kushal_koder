@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../Music/destination/image"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Team_kushal_koder"
+	}
+}
