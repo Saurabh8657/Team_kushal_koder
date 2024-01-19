@@ -7,8 +7,13 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&family=DM+Serif+Display&family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e41a797fac.js" crossorigin="anonymous"></script>
+
+    <!-- ///for modal -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <title>Admin Dashboard - Globe Gliders</title>
     <link rel="stylesheet" href="index.css">
@@ -33,7 +38,7 @@
         </ul>
     </nav>
 
-    <h1 id="greet"><i class="fa-solid fa-user-tie"></i>  Welcome to the dashboard, Team Kushal Koders!</h1>
+    <h1 id="greet" class="greeting"><i class="fa-solid fa-user-tie"></i>  Welcome to the dashboard, Team Kushal Koders!</h1>
     <div class="global-sales">
         <div>
             <h1>Global Sales by Top Locations</h1>
@@ -112,7 +117,7 @@
         </div>
     </div>
 
-    <div class="admin-container1">
+
         <!-- <div class="update-data-form">
 
             <form class="updateForm">
@@ -148,6 +153,7 @@
                 
             </form>
         </div> -->
+    <div class="admin-container1">
         <div class="destination-list">
             <div class="card">
                 <div class="card-img">
@@ -174,8 +180,8 @@
 
     </div>
 
-    <div class="admin-container2">
-        <div class="update-data-form">
+    
+        <!-- <div class="update-data-form">
 
             <form class="updateForm">
                 <h2>Modify/Add any Packages</h2>
@@ -209,7 +215,55 @@
                 </div>
                 
             </form>
+        </div> -->
+        <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modify/Add any Packages</h4>
         </div>
+        <div class="modal-body">
+            <form class="updateForm">
+                <input type="text" class="id" name="id" placeholder="id"  value="">
+
+                <input type="text" class="country" name="country" placeholder="Country"  value="">
+        
+                <input type="text" class="city" name="city" placeholder="City" value="">
+        
+                <input type="text" class="imageURL" name="imageURL" placeholder="imageURL" value="">
+        
+                <textarea class="description" name="description" placeholder="Description" rows="4"></textarea>
+        
+                <input type="number" class="price" name="price" placeholder="Price"  value="">
+        
+                <input type="number" class="offerPrice" name="offerPrice" placeholder="Offer Price"  value="">
+
+                <input type="text" class="package" name="package" placeholder="Package" value="">
+        
+                <input type="date" class="start" name="start" placeholder="Start Date ex:2024-07-10" value="">
+        
+                <input type="date" class="end" name="end" placeholder="End Date ex:2024-07-18" value="">
+        
+                <input type="number" class="ratings" name="ratings" placeholder="Ratings" step="0.1" value="">
+        
+                <input type="number" class="lovedBy" name="lovedBy" placeholder="Loved By" value="">
+            </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default update-destination-btn" data-dismiss="modal">Update Destinations</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+    <div class="admin-container2">
         <div class="package-list">
             <div class="card">
                 <div class="card-img">

@@ -13,19 +13,19 @@ let destinationList = document.querySelector(".destination-list") ;
 let packageList = document.querySelector(".package-list") ;
 
 
-///// update Destintion form 
-// let adminInputId = document.querySelector(".id") ;
-// let adminInputCountry = document.querySelector(".country") ;
-// let adminInputCity = document.querySelector(".city") ;
-// let adminInputImageURL = document.querySelector(".imageURL") ;
-// let adminInputDescription = document.querySelector(".description") ;
-// let adminInputPrice = document.querySelector(".price") ;
-// let adminInputOfferPrice = document.querySelector(".offerPrice") ;
-// let adminInputPackage = document.querySelector(".package") ;
-// let adminInputStart = document.querySelector(".start") ;
-// let adminInputEnd = document.querySelector(".end") ;
-// let adminInputRatings = document.querySelector(".ratings") ;
-// let adminInputLovedBy = document.querySelector(".lovedBy") ;
+/// update Destintion form 
+let adminInputId = document.querySelector(".id") ;
+let adminInputCountry = document.querySelector(".country") ;
+let adminInputCity = document.querySelector(".city") ;
+let adminInputImageURL = document.querySelector(".imageURL") ;
+let adminInputDescription = document.querySelector(".description") ;
+let adminInputPrice = document.querySelector(".price") ;
+let adminInputOfferPrice = document.querySelector(".offerPrice") ;
+let adminInputPackage = document.querySelector(".package") ;
+let adminInputStart = document.querySelector(".start") ;
+let adminInputEnd = document.querySelector(".end") ;
+let adminInputRatings = document.querySelector(".ratings") ;
+let adminInputLovedBy = document.querySelector(".lovedBy") ;
 
 ///// update Package form 
 let packageInputId = document.querySelector(".id2") ;
@@ -235,11 +235,11 @@ async function fetchData(url,query="") {
         // }
         const data = await response.json();
         console.log(data);
-        if( url===destinationURL ){
+        // if( url===destinationURL ){
             displayDestinations(data);
-        }else if( url===packageURL ){
+        // }else if( url===packageURL ){
             displayPackages(data);
-        }
+        // }
         
     } catch (error) {
         console.error('Error:', error);
@@ -296,9 +296,9 @@ function createCard(item,index){
     let cardBody = document.createElement("div") ;           
     cardBody.classList.add("card-body");
   
-    let id = document.createElement("p") ;
-    id.classList.add("card-id");
-    id.innerText = item.id ; 
+    // let id = document.createElement("p") ;
+    // id.classList.add("card-id");
+    // id.innerText = item.id ; 
   
     let country = document.createElement("p") ;
     country.classList.add("card-country");
@@ -308,9 +308,9 @@ function createCard(item,index){
     city.classList.add("card-city");
     city.innerText = item.city ;
 
-    let description = document.createElement("p") ;
-    description.classList.add("card-description");
-    description.innerText = item.description ;
+    // let description = document.createElement("p") ;
+    // description.classList.add("card-description");
+    // description.innerText = item.description ;
   
     let price = document.createElement("span") ;
     price.classList.add("card-strikethroughprice");
@@ -320,16 +320,19 @@ function createCard(item,index){
     offerPrice.classList.add("card-offerPrice");
     offerPrice.innerText = item.offerPrice ;
   
-    let package = document.createElement("p") ;
-    package.classList.add("card-package");
-    package.innerText = item.package ;
+    // let package = document.createElement("p") ;
+    // package.classList.add("card-package");
+    // package.innerText = item.package ;
 
     let edit = document.createElement("button") ;
-    edit.classList.add("edit") ;
+    edit.classList.add("edit" ,"btn", "btn-info", "btn-lg") ;
     edit.innerText = "Edit";
+    /// for modal
+    edit.setAttribute( "data-toggle","modal" ) ;
+    edit.setAttribute( "data-target","#myModal" ) ;
 
     edit.addEventListener("click",() => {
-      // adminInputId.value = item.id ;
+      adminInputId.value = item.id ;
       adminInputCountry.value = item.country ;
       adminInputCity.value = item.city ;
       adminInputImageURL.value = item.imageURL ;
@@ -346,9 +349,10 @@ function createCard(item,index){
     let deleteBtn = document.createElement("button") ;
     deleteBtn.classList.add("delete") ;
     deleteBtn.innerText = "Delete" ;
-    deleteBtn.addEventListener("click",() => {
-      deleteDestination(item,index) ;
-    })
+
+    // deleteBtn.addEventListener("click",() => {
+    //   deleteDestination(item,index) ;
+    // })
 
     let details = document.createElement("div") ;
     details.classList.add("details");
@@ -361,12 +365,9 @@ function createCard(item,index){
     editBtnsdiv.append( edit,deleteBtn )
     cardBody.append( details, editBtnsdiv)
   
-    card.append( cardImg, cardBody ) ;
+    card.append( cardImg,cardBody ) ;
     return card ;
 }
-
-
-
 
   // city: "Singapore"
 // country: "Australia"
