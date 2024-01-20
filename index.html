@@ -14,35 +14,25 @@
     <title>Globe Gliders</title>
 </head>
 <body>
-    <!-- <nav>
-        <div class="logo-div">
+      <nav class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+          <div class="nav-title">
             <a href="#">
-                <img src="/img/logo.gif" alt="logo-img" class="logo-img">
+              <img src="/img/logo.gif" alt="logo-img" class="logo-img">
             </a>
             <h1 class="logo">Globe Gliders</h1>
+          </div>
         </div>
-        <ul class="nav-tags">
-            <li> <a href="index.html">Home</a> </li>
-            <li> <a href="#">Packages</a> </li>
-            <li> <a href="#">Destinations</a> </li>
-            <li> <a href="admin.html"> Admin </a> </li>
-            <li> <a href="#"> <i class="fa-solid fa-user"></i>  Sign In</a> </li>
-            <li> <a href="#"> <i class="fa-solid fa-user-plus"></i>  Sign Up</a> </li>
-        </ul>
-    </nav> -->
-    <nav>
-        <div class="burger-menu">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
         </div>
-        <div class="logo-div">
-          <a href="#">
-            <img src="/img/logo.gif" alt="logo-img" class="logo-img">
-          </a>
-          <h1 class="logo">Globe Gliders</h1>
-        </div>
-        <ul class="nav-tags">
+        
+        <ul class="nav-list">
           <li><a href="index.html">Home</a></li>
           <li><a href="#">Packages</a></li>
           <li><a href="#">Destinations</a></li>
@@ -57,7 +47,13 @@
             <h1>Embark on a Journey with Globe Gliders</h1>
             <p>Discover the thrill of travelling as we guide you through breathtaking landscapes, cultural marvels, and hidden gems.</p>
 
-            <input type="text" id="search" placeholder="search by location"> <button id="search-btn">Search</button>
+            <select id="searchBy">
+              <option value="">Select By</option>
+              <option value="city">City</option>
+              <option value="Country">Country</option>
+            </select>
+            <input type="text" id="search" placeholder="search by location">
+            <button id="search-btn">Search</button>
         </div>
         <div class="img-slider">
             <div id="img-slider">
@@ -100,51 +96,40 @@
             <p>Every Sunday is a service for hotels, air  tickets and other travel services for professionals</p>
             <button>Learn More</button>
         </div>
-        <!-- <div class="packages">
-            <div class="pac1">
-                <img src="https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg" alt="">
-                <div>
-                    <div>
-                        <h2>The grand canal</h2>
-                        <p>venice Northern itealu</p>
-                    </div>
-                    <button>Book now 	&#129062; </button>
-                </div>
-            </div>
-        </div> -->
+      
         <div class="cards-list">
   
             <div class="card 1">
-              <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+              <div class="card_image"> <img src="https://images.unsplash.com/photo-1490077476659-095159692ab5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHRoYWlsYW5kfGVufDB8fDB8fHww" /> </div>
               <div class="card_title title-white">
-                <p>Card Title</p>
+                <p>Thailand Packgaes</p>
               </div>
             </div>
             
               <div class="card 2">
               <div class="card_image">
-                <img src="https://cdn.blackmilkclothing.com/media/wysiwyg/Wallpapers/PhoneWallpapers_FloralCoral.jpg" />
+                <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGJlYWNofGVufDB8fDB8fHww" />
                 </div>
               <div class="card_title title-white">
-                <p>Card Title</p>
+                <p>Lakshadweep Packages</p>
               </div>
             </div>
             
             <div class="card 3">
               <div class="card_image">
-                <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" />
+                <img src="https://images.unsplash.com/photo-1532444143931-9f60a76242e7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
               </div>
               <div class="card_title">
-                <p>Card Title</p>
+                <p>London Packages</p>
               </div>
             </div>
               
               <div class="card 4">
               <div class="card_image">
-                <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
+                <img src="https://images.unsplash.com/photo-1510379872535-9310dc6fd6a7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fEJhbmdrb2slMjBtYXNzYWdlfGVufDB8fDB8fHww" />
                 </div>
               <div class="card_title title-black">
-                <p>Card Title</p>
+                <p>Bangkok Packages</p>
               </div>
               </div>
             
@@ -176,28 +161,28 @@
     </div>
     
     <footer>
-        <hr style="color: white; size: 2px;">
-        <div class="footer1">
-            <h1>Globe Gliders</h1>
-            <ul>
-                <li> <a href="#"> Home </a>  </li>
-                <li> <a href="#"> Destinations </a>  </li>
-                <li> <a href="#"> Feedback </a>  </li>
-                <li> <a href="#"> Pricing </a>  </li>
-            </ul>
-            <div>
-                <p> &copy; 2024 Globe Gliders.</p>
-                <p> Team Kushal Koders </p>
-            </div>
-        </div>
-        
-        <div class="socials">
-            <i class="fa-brands fa-facebook fa-xl"></i>
-            <i class="fa-brands fa-twitter fa-xl "></i>
-            <i class="fa-brands fa-instagram fa-xl"></i>
-        </div>
-        
-    </footer>
+      <hr style="color: white; size: 2px;">
+      <div class="footer1">
+          <h1>Globe Gliders</h1>
+          <ul>
+              <li> <a href="#"> Home </a>  </li>
+              <li> <a href="#"> Destinations </a>  </li>
+              <li> <a href="#"> Feedback </a>  </li>
+              <li> <a href="#"> Pricing </a>  </li>
+          </ul>
+          <div>
+              <p> &copy; 2024 Globe Gliders.</p>
+              <p> Team Kushal Koders </p>
+          </div>
+      </div>
+      
+      <div class="socials">
+          <i class="fa-brands fa-facebook fa-xl"></i>
+          <i class="fa-brands fa-twitter fa-xl "></i>
+          <i class="fa-brands fa-instagram fa-xl"></i>
+      </div>
+      
+  </footer>
     <script src="/scripts/home.js"></script>
 </body>
 </html>

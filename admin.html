@@ -489,10 +489,13 @@
             </div>
         </div>
         
+        <div class="paginationWrapper1">
+            
+        </div>
 
     </div>
 
-    <!-- Modal  for destinations -->
+    <!-- Modal  for all -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
@@ -514,11 +517,26 @@
         
                 <input type="text" class="imageURL" name="imageURL" placeholder="imageURL" value="">
 
+                <input type="text" class="package" name="package" placeholder="package"  value="">
+
+                <input type="text" class="price" name="price" placeholder="price"  value="">
+                
+                <input type="text" class="offerPrice" name="offerPrice" placeholder="offerPrice"  value="">
+
+
             </form>
+
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default add-destination-btn" data-dismiss="modal">Add Destinations</button>
           <button type="button" class="btn btn-default update-destination-btn" data-dismiss="modal">Update Destinations</button>
+
+          <button type="button" class="btn btn-default add-national-btn" data-dismiss="modal">Add National</button>
+          <button type="button" class="btn btn-default update-national-btn" data-dismiss="modal">Update National</button>
+
+          <button type="button" class="btn btn-default add-international-btn" data-dismiss="modal">Add International</button>
+          <button type="button" class="btn btn-default update-international-btn" data-dismiss="modal">Update InterNational</button>
+
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -528,7 +546,7 @@
 
     <div class="admin-container2">
         <h1>Our National Packages</h1>
-        <button id="add-new-national-package" >Add New</button>
+        <button id="add-new-national-package" class="add-new-national-package" >Add New</button>
         <div class="national-package-list">
             <div class="card">
                 <div class="card-img">
@@ -551,51 +569,17 @@
 
             </div>
         </div>
+
+        <div class="paginationWrapper2">
+            
+        </div>
         
 
     </div>
-    <!-- Modal  for National Pacakages -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modify/Add any Packages</h4>
-        </div>
-        <div class="modal-body">
-            <form class="updateForm">
-                <input type="text" class="id2" name="id" placeholder="id"  value="">
-
-                <input type="text" class="city2" name="city" placeholder="City" value="">
-
-                <input type="text" class="country2" name="country" placeholder="Country"  value="">
-                
-                <input type="text" class="package2" name="package" placeholder="package"  value="">
-
-                <input type="text" class="price2" name="price" placeholder="price"  value="">
-                
-                <input type="text" class="offerPrice" name="offerPrice" placeholder="offerPrice"  value="">
-        
-                <input type="text" class="imageURL" name="imageURL" placeholder="imageURL" value="">
-
-            </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default update-national-btn" data-dismiss="modal">To National</button>
-          <button type="button" class="btn btn-default update-international-btn" data-dismiss="modal">To InterNational</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-
+ 
     <div class="admin-container3">
         <h1>Our International Packages</h1>
-        <button id="add-new-international-package" >Add New</button>
-        <div class="national-package-list">
+        <button id="add-new-international-package" class="add-new-national-package" >Add New</button>
         <div class="international-package-list">
             <div class="card">
                 <div class="card-img">
@@ -619,6 +603,9 @@
             </div>
         </div>
         
+        <div class="paginationWrapper3">
+            
+        </div>
 
     </div>
 
