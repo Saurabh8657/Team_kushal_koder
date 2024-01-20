@@ -1,57 +1,62 @@
 /// urls
-const baseURL = 'http://localhost:3000/';
-// http://localhost:3000/destinations
-const destinationURL = 'http://localhost:3000/destinations/';
-const packageURL = 'http://localhost:3000/packages';
+const baseURL = 'https://dummyapi2.onrender.com/';
+
+const destinationURL = `${baseURL}destinations`;
+const nationalPackageURL = `${baseURL}packagesNational`;
+const internationalPackageURL = `${baseURL}packagesInternational`;
 
 
 
 ////////containers
 let adminContainer_1 = document.querySelector(".admin-container1") ;
+let adminContainer_2 = document.querySelector(".admin-container2") ;
+let adminContainer_3 = document.querySelector(".admin-container3") ;
 let updateDataForm = document.querySelector(".update-data-form") ;
 let destinationList = document.querySelector(".destination-list") ;
-let packageList = document.querySelector(".package-list") ;
+let nationalPackageList = document.querySelector(".national-package-list") ;
+let internationalPackageList = document.querySelector(".international-package-list") ;
+
 
 
 /// update Destintion form 
-let adminInputId = document.querySelector(".id") ;
-let adminInputCountry = document.querySelector(".country") ;
-let adminInputCity = document.querySelector(".city") ;
-let adminInputImageURL = document.querySelector(".imageURL") ;
-let adminInputDescription = document.querySelector(".description") ;
-let adminInputPrice = document.querySelector(".price") ;
-let adminInputOfferPrice = document.querySelector(".offerPrice") ;
-let adminInputPackage = document.querySelector(".package") ;
-let adminInputStart = document.querySelector(".start") ;
-let adminInputEnd = document.querySelector(".end") ;
-let adminInputRatings = document.querySelector(".ratings") ;
-let adminInputLovedBy = document.querySelector(".lovedBy") ;
+let destintionInputId = document.querySelector(".id") ;
+let destintionInputCity = document.querySelector(".city") ;
+let destintionInputCountry = document.querySelector(".country") ;
+let destintionInputDescription = document.querySelector(".description") ;
+let destintionInputImageURL = document.querySelector(".imageURL") ;
+
 
 ///// update Package form 
+
+//// National Pacakages
 let packageInputId = document.querySelector(".id2") ;
-// let packageInputCountry = document.querySelector(".country2") ;
-// let packageInputCity = document.querySelector(".city2") ;
-// let packageInputImageURL = document.querySelector(".imageURL2") ;
-// let packageInputDescription = document.querySelector(".description2") ;
-// let packageInputPrice = document.querySelector(".price2") ;
-// let packageInputOfferPrice = document.querySelector(".offerPrice2") ;
-// let packageInputPackage = document.querySelector(".package2") ;
-// let packageInputStart = document.querySelector(".start2") ;
-// let packageInputEnd = document.querySelector("#.id2") ;
-// let packageInputRatings = document.querySelector(".ratings2") ;
-// let packageInputLovedBy = document.querySelector(".lovedBy2") ;
+let packageInputCity = document.querySelector(".city2") ;
+let packageInputCountry = document.querySelector(".country2") ;
+let packageInputPackage = document.querySelector(".package2") ;
+let packageInputPrice = document.querySelector(".price2") ;
+let packageInputOfferPrice = document.querySelector(".offerPrice2") ;
+let packageInputImageURL = document.querySelector(".imageURL2") ;
+//// Inter-National Pacakages
 
 
-// ///// Destination update & add buttons
-// let updateDestinationBtn = document.querySelector(".update-destination-btn") ;
-// let addDestinationBtn = document.querySelector(".add-destination-btn") ;
+
+///// Destination update & add buttons
+let updateDestinationBtn = document.querySelector(".update-destination-btn") ;
+let addDestinationBtn = document.querySelector(".add-destination-btn") ;
 // ////// event listners
-// updateDestinationBtn.addEventListener( "click" , updateDestination ) ;
-// addDestinationBtn.addEventListener( "click" , addDestination ) ;
+updateDestinationBtn.addEventListener( "click" , updateDestination ) ;
+addDestinationBtn.addEventListener( "click" , addDestination ) ;
 
 
 
-// ///// Package update & add buttons
+// ///// National Package update & add buttons
+// let updatePackageBtn = document.querySelector(".update-package-btn") ;
+// let addPackageBtn = document.querySelector(".add-package-btn") ;
+// ////// event listners
+// updatePackageBtn.addEventListener( "click" , updatePackage ) ;
+// addPackageBtn.addEventListener( "click" , addPackage ) ;
+
+// ///// Inter National Package update & add buttons
 // let updatePackageBtn = document.querySelector(".update-package-btn") ;
 // let addPackageBtn = document.querySelector(".add-package-btn") ;
 // ////// event listners
@@ -59,24 +64,211 @@ let packageInputId = document.querySelector(".id2") ;
 // addPackageBtn.addEventListener( "click" , addPackage ) ;
 
 
-async function addPackage(){
+
+fetchData(`${destinationURL}`,`?_page=1&_limit=8`);
+fetchData(`${nationalPackageURL}`,`?_page=1&_limit=8`);
+fetchData(`${internationalPackageURL}`,`?_page=1&_limit=8`);
+async function fetchData(url,query="") {
+    try {
+        let userAuthToken = JSON.parse(localStorage.getItem("userAuthToken")) ;
+        let userId = JSON.parse(localStorage.getItem("userId")) ;
+        const response = await fetch(`${url}${query}`,{
+            method : "GET" ,
+            headers : {
+                Authorization : `Bearer ${userAuthToken}`
+            }
+        });
+        const data = await response.json();
+        console.log(data);
+        if( url===destinationURL ){
+            displayDestinations(data);
+        }else if( url===nationalPackageURL ){
+            displayNationalPackages(data);
+        }else if( url===internationalPackageURL ){
+            displayInternationalPackages(data);
+        }
+        
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+function displayNationalPackages(packages){
+    nationalPackageList.innerHTML = '';
+    packages.forEach( (item,index) => {
+        const card = createPackageCard(item,index) ;
+        nationalPackageList.append(card);
+    });
+}
+function displayInternationalPackages(packages){
+    internationalPackageList.innerHTML = '';
+    packages.forEach( (item,index) => {
+        const card = createPackageCard(item,index) ;
+        internationalPackageList.append(card);
+    });
+}
+
+
+function createPackageCard(item,index){
+    let card = document.createElement("div") ;
+    card.classList.add("card");
+
+    let cardImg = document.createElement("div") ;
+    cardImg.classList.add("card-img");
+  
+    let img = document.createElement("img") ;
+    img.src = item.image ; 
+
+    let cardBody = document.createElement("div") ;           
+    cardBody.classList.add("card-body");
+  
+    // let id = document.createElement("p") ;
+    // id.classList.add("card-id");
+    // id.innerText = item.id ; 
+  
+    let country = document.createElement("p") ;
+    country.classList.add("card-country");
+    country.innerText = item.country ;
+  
+    let city = document.createElement("p") ;
+    city.classList.add("card-city");
+    city.innerText = item.city ;
+
+    let price = document.createElement("span") ;
+    price.classList.add("card-strikethroughprice");
+    price.innerText = item.price ;
+  
+    let offerPrice = document.createElement("span") ;
+    offerPrice.classList.add("card-offerPrice");
+    offerPrice.innerText = item.offerPrice ;
+
+
+    let edit = document.createElement("button") ;
+    edit.innerText = "Edit";
+    /// for modal
+    edit.classList.add("edit" ,"btn", "btn-info", "btn-lg") ;
+    edit.setAttribute( "data-toggle","modal" ) ;
+    edit.setAttribute( "data-target","#myModal" ) ;
+
+    edit.addEventListener("click",() => {
+      packageInputId.value = item.id ;
+      packageInputCity.value = item.city ;
+      packageInputCountry.value = item.country ;
+      packageInputPackage.value = item.package ;
+      packageInputPrice.value = item.price ;
+      packageInputOfferPrice.value = item.offerPrice ;
+      packageInputImageURL.value = item.image ;
+    })
+
+    let deleteBtn = document.createElement("button") ;
+    deleteBtn.classList.add("delete") ;
+    deleteBtn.innerText = "Delete" ;
+
+    deleteBtn.addEventListener("click",() => {
+        if(item.country==="India"){
+            deleteNationalPackage(item,index) ;
+        }else{
+            deleteInternationalPackage(item,index) ;
+        }
+    })
+
+    let details = document.createElement("div") ;
+    details.classList.add("details");
+
+    let editBtnsdiv = document.createElement("div") ;
+    editBtnsdiv.classList.add("edit-buttons");
+
+    cardImg.append( img ) ;
+    details.append( city, offerPrice, price ) ;
+    editBtnsdiv.append( edit, deleteBtn ) ;
+    cardBody.append( details, editBtnsdiv) ;
+  
+    card.append( cardImg,cardBody ) ;
+    return card ;
+}
+
+function displayDestinations(destinations) {
+    destinationList.innerHTML = '';
+    destinations.forEach( (item,index) => {
+        const card = createDestinationsCard(item,index) ;
+        destinationList.append(card);
+    });
+}
+function createDestinationsCard(item,index){
+    let card = document.createElement("div") ;
+    card.classList.add("card");
+
+    let cardImg = document.createElement("div") ;
+    cardImg.classList.add("card-img");
+  
+    let img = document.createElement("img") ;
+    img.src = item.imageURL ; 
+
+    let cardBody = document.createElement("div") ;           
+    cardBody.classList.add("card-body");
+
+    let city = document.createElement("p") ;
+    city.classList.add("card-city");
+    city.innerText = item.city ;
+  
+    let country = document.createElement("p") ;
+    country.classList.add("card-country");
+    country.innerText = item.country ;
+  
+    let edit = document.createElement("button") ;
+    edit.innerText = "Edit";
+    /// for modal
+    edit.classList.add("edit" ,"btn", "btn-info", "btn-lg") ;
+    edit.setAttribute( "data-toggle","modal" ) ;
+    edit.setAttribute( "data-target","#myModal" ) ;
+
+    edit.addEventListener("click",() => {
+      destintionInputId.value = item.id ;
+      destintionInputCity.value = item.city ;
+      destintionInputCountry.value = item.country ;
+      destintionInputDescription.value = item.description ;
+      destintionInputImageURL.value = item.imageURL ;
+    })
+
+    let deleteBtn = document.createElement("button") ;
+    deleteBtn.classList.add("delete") ;
+    deleteBtn.innerText = "Delete" ;
+
+    deleteBtn.addEventListener("click",() => {
+      deleteDestination(item,index) ;
+    })
+
+    let details = document.createElement("div") ;
+    details.classList.add("details");
+
+    let editBtnsdiv = document.createElement("div") ;
+    editBtnsdiv.classList.add("edit-buttons");
+
+    cardImg.append( img ) ;
+    details.append( city,country )
+    editBtnsdiv.append( edit,deleteBtn )
+    cardBody.append( details, editBtnsdiv)
+  
+    card.append( cardImg,cardBody ) ;
+    return card ;
+}
+
+
+///////////// packages
+async function addNationalPackage(){
     let obj = {
+        "id": packageInputId.value,
         "city": packageInputCity.value ,
         "country": packageInputCountry.value,
-        "date": {"start": packageInputStart.value, "end": packageInputEnd.value},
-        "description": packageInputDescription.value,
-        "id": packageInputId.value,
-        "imageURL": packageInputImageURL.value,
-        "lovedBy": packageInputLovedBy.value,
-        "offerPrice": packageInputOfferPrice.value,
         "package": packageInputPackage.value,
         "price": packageInputPrice.value,
-        "ratings": packageInputRatings.value
+        "offerPrice": packageInputOfferPrice.value,
+        "image": packageInputImageURL.value,
     }
  try{
     let userAuthToken = JSON.parse(localStorage.getItem("userAuthToken")) ;
     let userId = JSON.parse(localStorage.getItem("userId")) ;
-    let response = await fetch(`${packageURL}/${packageInputId.value}`,{
+    let response = await fetch(`${nationalPackageURL}`,{
         method : "PUT",
         headers : { 
             "content-type" : "application/json",
@@ -86,32 +278,28 @@ async function addPackage(){
     } );
     let data = await response.json();
     console.log(data) ;
-    fetchData(`${destinationURL}`,`?_page=1&_limit=8`) ;
+    fetchData(`${nationalPackageURL}`,`?_page=1&_limit=8`) ;
  }
  catch(error){
-    console.log(`from add desination : `,error) ;
+    console.log(`from add National Package : `,error) ;
  }
 }
 
-async function updatePackage(){
+async function addInternationalPackage(){
     let obj = {
+        "id": packageInputId.value,
         "city": packageInputCity.value ,
         "country": packageInputCountry.value,
-        "date": {"start": packageInputStart.value, "end": packageInputEnd.value},
-        "description": packageInputDescription.value,
-        "id": packageInputId.value,
-        "imageURL": packageInputImageURL.value,
-        "lovedBy": packageInputLovedBy.value,
-        "offerPrice": packageInputOfferPrice.value,
         "package": packageInputPackage.value,
         "price": packageInputPrice.value,
-        "ratings": packageInputRatings.value
+        "offerPrice": packageInputOfferPrice.value,
+        "image": packageInputImageURL.value,
     }
  try{
     let userAuthToken = JSON.parse(localStorage.getItem("userAuthToken")) ;
     let userId = JSON.parse(localStorage.getItem("userId")) ;
-    let response = await fetch(`${packageURL}/${packageInputId.value}`,{
-        method : "PATCH",
+    let response = await fetch(`${internationalPackageURL}`,{
+        method : "PUT",
         headers : { 
             "content-type" : "application/json",
             Authorization: `Bearer ${userAuthToken}`
@@ -120,31 +308,27 @@ async function updatePackage(){
     } );
     let data = await response.json();
     console.log(data) ;
-    fetchData(`${packageURL}`,`?_page=1&_limit=8`) ;
+    fetchData(`${internationalPackageURL}`,`?_page=1&_limit=8`) ;
  }
  catch(error){
-    console.log(`from update Package : `,error) ;
+    console.log(`from add International Package : `,error) ;
  }
 }
 
-async function updateDestination(){
+async function updateNationalPackage(){
     let obj = {
-        "city": adminInputCity.value ,
-        "country": adminInputCountry.value,
-        "date": {"start": adminInputStart.value, "end": adminInputEnd.value},
-        "description": adminInputDescription.value,
-        "id": adminInputId.value,
-        "imageURL": adminInputImageURL.value,
-        "lovedBy": adminInputLovedBy.value,
-        "offerPrice": adminInputOfferPrice.value,
-        "package": adminInputPackage.value,
-        "price": adminInputPrice.value,
-        "ratings": adminInputRatings.value
+        "id": packageInputId.value,
+        "city": packageInputCity.value ,
+        "country": packageInputCountry.value,
+        "package": packageInputPackage.value,
+        "price": packageInputPrice.value,
+        "offerPrice": packageInputOfferPrice.value,
+        "image": packageInputImageURL.value,
     }
  try{
     let userAuthToken = JSON.parse(localStorage.getItem("userAuthToken")) ;
     let userId = JSON.parse(localStorage.getItem("userId")) ;
-    let response = await fetch(`${destinationURL}/${adminInputId.value}`,{
+    let response = await fetch(`${nationalPackageURL}/${packageInputId.value}`,{
         method : "PATCH",
         headers : { 
             "content-type" : "application/json",
@@ -154,26 +338,85 @@ async function updateDestination(){
     } );
     let data = await response.json();
     console.log(data) ;
-    fetchData(`${destinationURL}`,`?_page=1&_limit=8`) ;
+    fetchData(`${nationalPackageURL}`,`?_page=1&_limit=8`) ;
  }
  catch(error){
-    console.log(`from update desination : `,error) ;
+    console.log(`from update National Package : `,error) ;
  }
 }
 
+async function updateInternationalPackage(){
+    let obj = {
+        "id": packageInputId.value,
+        "city": packageInputCity.value ,
+        "country": packageInputCountry.value,
+        "package": packageInputPackage.value,
+        "price": packageInputPrice.value,
+        "offerPrice": packageInputOfferPrice.value,
+        "image": packageInputImageURL.value,
+    }
+ try{
+    let userAuthToken = JSON.parse(localStorage.getItem("userAuthToken")) ;
+    let userId = JSON.parse(localStorage.getItem("userId")) ;
+    let response = await fetch(`${internationalPackageURL}/${packageInputId.value}`,{
+        method : "PATCH",
+        headers : { 
+            "content-type" : "application/json",
+            Authorization: `Bearer ${userAuthToken}`
+        },
+        body : JSON.stringify(obj)
+    } );
+    let data = await response.json();
+    console.log(data) ;
+    fetchData(`${internationalPackageURL}`,`?_page=1&_limit=8`) ;
+ }
+ catch(error){
+    console.log(`from update international Package : `,error) ;
+ }
+}
+
+async function deleteNationalPackage(item,index){
+    try {
+        let userAuthToken = JSON.parse(localStorage.getItem("userAuthToken")) ;
+        let userId = JSON.parse(localStorage.getItem("userId")) ;
+        const response = await fetch(`${nationalPackageURL}/${item.id}`,{
+            method : "DELETE" ,
+            headers : {
+                Authorization : `Bearer ${userAuthToken}`
+            }
+        });
+        const data = await response.json();
+        console.log(data);
+        fetchData(`${nationalPackageURL}`,`?_page=1&_limit=8`) ;
+    } catch (error) {
+        console.error('delete National Package:', error);
+    }
+}
+
+async function deleteInternationalPackage(item,index){
+    try {
+        let userAuthToken = JSON.parse(localStorage.getItem("userAuthToken")) ;
+        let userId = JSON.parse(localStorage.getItem("userId")) ;
+        const response = await fetch(`${internationalPackageURL}/${item.id}`,{
+            method : "DELETE" ,
+            headers : {
+                Authorization : `Bearer ${userAuthToken}`
+            }
+        });
+        const data = await response.json();
+        console.log(data);
+        fetchData(`${internationalPackageURL}`,`?_page=1&_limit=8`) ;
+    } catch (error) {
+        console.error('delete InterNational Package:', error);
+    }
+}
+///////////// Destinations
 async function addDestination(){
     let obj = {
-        "city": adminInputCity.value ,
-        "country": adminInputCountry.value,
-        "date": {"start": adminInputStart.value, "end": adminInputEnd.value},
-        "description": adminInputDescription.value,
-        "id": adminInputId.value,
-        "imageURL": adminInputImageURL.value,
-        "lovedBy": adminInputLovedBy.value,
-        "offerPrice": adminInputOfferPrice.value,
-        "package": adminInputPackage.value,
-        "price": adminInputPrice.value,
-        "ratings": adminInputRatings.value
+        "id": destintionInputId.value,
+        "city": destintionInputCity.value ,
+        "country": destintionInputCountry.value,
+        "description": destintionInputDescription.value
     }
  try{
     let userAuthToken = JSON.parse(localStorage.getItem("userAuthToken")) ;
@@ -195,71 +438,31 @@ async function addDestination(){
  }
 }
 
-// <input type="text" id="country" name="country" placeholder="Country"  value="">
-        
-// <input type="text" id="city" name="city" placeholder="City" value="">
-
-// <input type="text" id="imageURL" name="imageURL" placeholder="imageURL" value="">
-
-// <textarea id="description" name="description" placeholder="Description" rows="4"></textarea>
-
-// <input type="number" id="price" name="price" placeholder="Price"  value="">
-
-// <input type="number" id="offerPrice" name="offerPrice" placeholder="Offer Price"  value="">
-
-// <input type="text" id="package" name="package" placeholder="Package" value="">
-
-// <input type="date" id="start" name="start" placeholder="Start Date ex:2024-07-10" value="">
-
-// <input type="date" id="end" name="end" placeholder="End Date ex:2024-07-18" value="">
-
-// <input type="number" id="ratings" name="ratings" placeholder="Ratings" step="0.1" value="">
-
-// <input type="number" id="lovedBy" name="lovedBy" placeholder="Loved By" value="">
-
-
-fetchData(`${destinationURL}`,`?_page=1&_limit=8`);
-// fetchData(`${packageURL}`,`?_page=1&_limit=8`);
-async function fetchData(url,query="") {
-    try {
-        let userAuthToken = JSON.parse(localStorage.getItem("userAuthToken")) ;
-        let userId = JSON.parse(localStorage.getItem("userId")) ;
-        const response = await fetch(`${url}${query}`,{
-            method : "GET" ,
-            headers : {
-                Authorization : `Bearer ${userAuthToken}`
-            }
-        });
-        // if (!response.ok) {
-        //     throw new Error(`HTTP error! Status: ${response.status}`);
-        // }
-        const data = await response.json();
-        console.log(data);
-        // if( url===destinationURL ){
-            displayDestinations(data);
-        // }else if( url===packageURL ){
-            displayPackages(data);
-        // }
-        
-    } catch (error) {
-        console.error('Error:', error);
+async function updateDestination(){
+    let obj = {
+        "id": destintionInputId.value,
+        "city": destintionInputCity.value ,
+        "country": destintionInputCountry.value,
+        "description": destintionInputDescription.value
     }
-}
-
-function displayPackages(packages){
-    packageList.innerHTML = '';
-    packages.forEach( (item,index) => {
-        const card = createCard(item,index) ;
-        packageList.append(card);
-    });
-}
-
-function displayDestinations(destinations) {
-    destinationList.innerHTML = '';
-    destinations.forEach( (item,index) => {
-        const card = createCard(item,index) ;
-        destinationList.append(card);
-    });
+ try{
+    let userAuthToken = JSON.parse(localStorage.getItem("userAuthToken")) ;
+    let userId = JSON.parse(localStorage.getItem("userId")) ;
+    let response = await fetch(`${destinationURL}/${destintionInputId.value}`,{
+        method : "PATCH",
+        headers : { 
+            "content-type" : "application/json",
+            Authorization: `Bearer ${userAuthToken}`
+        },
+        body : JSON.stringify(obj)
+    } );
+    let data = await response.json();
+    console.log(data) ;
+    fetchData(`${destinationURL}`,`?_page=1&_limit=8`) ;
+ }
+ catch(error){
+    console.log(`from update desination : `,error) ;
+ }
 }
 
 async function deleteDestination(item,index){
@@ -272,111 +475,10 @@ async function deleteDestination(item,index){
                 Authorization : `Bearer ${userAuthToken}`
             }
         });
-        // if (!response.ok) {
-        //     throw new Error(`HTTP error! Status: ${response.status}`);
-        // }
         const data = await response.json();
         console.log(data);
         fetchData(`${destinationURL}`,`?_page=1&_limit=8`) ;
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Delete Destination Error:', error);
     }
 }
-
-function createCard(item,index){
-    let card = document.createElement("div") ;
-    card.classList.add("card");
-
-    let cardImg = document.createElement("div") ;
-    cardImg.classList.add("card-img");
-  
-    let img = document.createElement("img") ;
-    img.src = item.imageURL ; 
-
-    let cardBody = document.createElement("div") ;           
-    cardBody.classList.add("card-body");
-  
-    // let id = document.createElement("p") ;
-    // id.classList.add("card-id");
-    // id.innerText = item.id ; 
-  
-    let country = document.createElement("p") ;
-    country.classList.add("card-country");
-    country.innerText = item.country ;
-  
-    let city = document.createElement("p") ;
-    city.classList.add("card-city");
-    city.innerText = item.city ;
-
-    // let description = document.createElement("p") ;
-    // description.classList.add("card-description");
-    // description.innerText = item.description ;
-  
-    let price = document.createElement("span") ;
-    price.classList.add("card-strikethroughprice");
-    price.innerText = item.price ;
-  
-    let offerPrice = document.createElement("span") ;
-    offerPrice.classList.add("card-offerPrice");
-    offerPrice.innerText = item.offerPrice ;
-  
-    // let package = document.createElement("p") ;
-    // package.classList.add("card-package");
-    // package.innerText = item.package ;
-
-    let edit = document.createElement("button") ;
-    edit.classList.add("edit" ,"btn", "btn-info", "btn-lg") ;
-    edit.innerText = "Edit";
-    /// for modal
-    edit.setAttribute( "data-toggle","modal" ) ;
-    edit.setAttribute( "data-target","#myModal" ) ;
-
-    edit.addEventListener("click",() => {
-      adminInputId.value = item.id ;
-      adminInputCountry.value = item.country ;
-      adminInputCity.value = item.city ;
-      adminInputImageURL.value = item.imageURL ;
-      adminInputDescription.value = item.description ;
-      adminInputPrice.value = item.price ;
-      adminInputOfferPrice.value = item.offerPrice ;
-      adminInputPackage.value = item.package ;
-      adminInputStart.value = item.date.start ;
-      adminInputEnd.value = item.date.end ;
-      adminInputRatings.value = item.ratings ;
-      adminInputLovedBy.value = item.lovedBy ;
-    })
-
-    let deleteBtn = document.createElement("button") ;
-    deleteBtn.classList.add("delete") ;
-    deleteBtn.innerText = "Delete" ;
-
-    // deleteBtn.addEventListener("click",() => {
-    //   deleteDestination(item,index) ;
-    // })
-
-    let details = document.createElement("div") ;
-    details.classList.add("details");
-
-    let editBtnsdiv = document.createElement("div") ;
-    editBtnsdiv.classList.add("edit-buttons");
-
-    cardImg.append( img ) ;
-    details.append( city,price,offerPrice )
-    editBtnsdiv.append( edit,deleteBtn )
-    cardBody.append( details, editBtnsdiv)
-  
-    card.append( cardImg,cardBody ) ;
-    return card ;
-}
-
-  // city: "Singapore"
-// country: "Australia"
-// date: {start: '2024-07-10', end: '2024-07-18'}
-// description: "Experience the breathtaking beauty of Sydney, with its iconic Opera House and stunning harbor views."
-// id: 1
-// imageURL: "https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/cities/2514/singapore1.jpg?crop=156:227&downsize=156:227"
-// lovedBy: 82
-// offerPrice: 1199
-// package: "7 Days / 6 Nights"
-// price: 1400
-// ratings: 4.5

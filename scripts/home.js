@@ -4,7 +4,17 @@ const baseURL = 'http://localhost:3000/';
 const destinationURL = 'http://localhost:3000/destinations/';
 const packageURL = 'http://localhost:3000/packages';
 
+//// berger Menu
 
+document.addEventListener('DOMContentLoaded', function () {
+    const burgerMenu = document.querySelector('.burger-menu');
+    const navTags = document.querySelector('.nav-tags');
+  
+    burgerMenu.addEventListener('click', function () {
+      navTags.classList.toggle('show');
+    });
+  });
+  
 
 let imgSlider = document.querySelector("#img-slider") ;
 let img = document.createElement("img");
