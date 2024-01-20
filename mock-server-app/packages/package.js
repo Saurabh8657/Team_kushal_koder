@@ -2,15 +2,16 @@ const baseURl = `https://kushal-koder-api.onrender.com/packagesNational`;
 
 
 let container = document.getElementById("container-card");
+let page = 1;
+const limit = 8;
 
 async function fetchData(){
     try{
-        let res = await fetch(`${baseURl}`);
-        // let totalPage = res.headers.get("X-Total-Count");
-        //  console.log(totalPage);
+        let res = await fetch(`${baseURl}?_page=${page}&_limit=${limit}`);
         let data = await res.json();
         console.log(data);
          appendData(data);
+         page++;
     }catch(error){
         console.log(error);
     }
@@ -40,13 +41,25 @@ function createCard(item){
     cardTitle.classList.add("card-title");
     cardTitle.textContent = item.city ;
 
-    let cardDesp = document.createElement("div");
-    cardDesp.classList.add("card-description");
-    // cardDesp.textContent = item.de
+
+    let anchor = document.createElement("a");
+
+    let bookNow = document.createElement("button");
+    bookNow.classList.add("btn");
+    bookNow.textContent = "Book Now";
     
+    anchor.append(bookNow);
 
     
-    card.append(image,cardContent,cardTitle);
+    card.append(image,cardContent,cardTitle,anchor);
     return card ;
 }
+window.addEventListener('scroll', () => {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    console.log(scrollHeight,scrollTop,clientHeight)
+    if (scrollTop + clientHeight >= scrollHeight - 5) {
+        fetchData();
+    }
+});
+
  fetchData();

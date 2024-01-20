@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #d6d6d7;
   }
   nav {
     padding: 0px 135px 0px 135px; 
@@ -254,4 +255,36 @@ body {
     .container-card {
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
+  }
+  .filter{
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+  .display{
+    background-image: url("/mock-server-app/packages/logo/displayRegion.avif");
+    width: 100%; 
+    height: 250px; 
+    background-size: cover; 
+  }
+  .filter select,input{
+    padding: 4px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    background-color: #ebecf0;
+    border: none;
+  }
+  #filterButton{
+    width: 100px;
+   color: black;
+   border: none;
+  }
+  #filterButton :hover{
+    background-color: #767acf ;
+  }
+  #pagination-container{
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    gap: 5px;
   }
