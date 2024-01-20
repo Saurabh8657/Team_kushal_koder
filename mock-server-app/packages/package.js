@@ -4,6 +4,8 @@ const baseURl = `https://kushal-koder-api.onrender.com/packagesNational`;
 let container = document.getElementById("container-card");
 let page = 1;
 const limit = 8;
+let priceFilter = ''; 
+let cityFilter = ''; 
 
 async function fetchData(){
     try{
@@ -17,43 +19,59 @@ async function fetchData(){
     }
 }
 function appendData(data){
-    container.innerHTML = " ";
-
-    // let card = document.createElement("div");
-    // card.classList.add("cardList");
-
     data.forEach((item)=>{
         let card = createCard(item);
         container.append(card);
     })
    
 }
-function createCard(item){
+
+function createCard(item) {
     let card = document.createElement("div");
     card.classList.add("card");
 
+    let cardimg = document.createElement("div");
     let image = document.createElement("img");
-    image.src = item.imageURL ;
+    image.src = item.imageURL;
+
+    cardimg.append(image);
 
     let cardContent = document.createElement("div");
     cardContent.classList.add("card-content");
-    let cardTitle = document.createElement("div");
-    cardTitle.classList.add("card-title");
-    cardTitle.textContent = item.city ;
 
+    let cardTitle = document.createElement("h3");
+    cardTitle.textContent = item.city;
 
-    let anchor = document.createElement("a");
+    let titlePriceContainer = document.createElement("div");
+    titlePriceContainer.classList.add("title-price-container");
+
+    let price = document.createElement("p");
+    price.classList.add("price");
+    let priceLabel = document.createTextNode("Price: ");
+    let priceAmount = document.createElement("span");
+    priceAmount.classList.add("amount");
+    priceAmount.textContent =  item.Price; 
+
+    let numberOfDays = document.createElement("p");
+    numberOfDays.textContent = "Days: " + item.Packages; 
+
+    let offerPrice = document.createElement("p");
+    offerPrice.textContent = "Offer Price: " + item.OfferPrice; 
 
     let bookNow = document.createElement("button");
     bookNow.classList.add("btn");
     bookNow.textContent = "Book Now";
-    
-    anchor.append(bookNow);
 
-    
-    card.append(image,cardContent,cardTitle,anchor);
-    return card ;
+    titlePriceContainer.append(cardTitle, price);
+
+    price.append(priceLabel, priceAmount);
+    cardContent.append(titlePriceContainer, numberOfDays, offerPrice, bookNow);
+
+    card.append(cardimg, cardContent);
+
+    return card;
 }
+
 window.addEventListener('scroll', () => {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
     console.log(scrollHeight,scrollTop,clientHeight)

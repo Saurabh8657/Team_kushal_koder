@@ -86,7 +86,6 @@ body {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 4px;
   }
-  
   h1 {
     font-size: 70px;
     margin: 0;
@@ -96,7 +95,66 @@ body {
     color: transparent;
     font-family: 'Dela Gothic One', sans-serif;
   }
-  
+ 
+/* Styles for cards */
+.card {
+  width: calc(20% - 20px); 
+  margin: 10px;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+      width: calc(50% - 20px);
+  }
+}
+
+.card img {
+  width: 100%; 
+  height: 150px; 
+  object-fit: cover; 
+  border-radius: 8px; 
+}
+
+.card-content {
+  padding: 10px;
+}
+
+.card-content h3 {
+  margin: 0 0 10px 0; 
+}
+
+.title-price-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px; 
+}
+
+.card-content p {
+  margin: 0;
+}
+.card-content p.price {
+  margin: 0;
+}
+
+.card-content p.price .amount {
+  text-decoration: line-through;
+  color: red; /* Change to your desired text color */
+}
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: auto; 
+}
+
   .heading {
     padding-top:10px;
     font-size: 30px;
@@ -105,63 +163,7 @@ body {
     
   }
   
-  .container-card {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
-  }
   
-  .card {
-    border: 1px solid #ccc;
-    border-radius: 30px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  
-  
-  .card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-  }
-  
-  .card-content {
-    padding: 15px;
-  }
-  
-  .card-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-align: left;
-    font-family: cursive;
-  }
-  
-  .card-description {
-    font-size: 0.9em;
-    color: #555;
-    text-align: left;
-  }
-  
-  .btn {
-    background-image: linear-gradient(90deg, #e16111 0, #eb240a 51%, #767473);
-    border-radius: 40px;
-    color: #fff;
-    width: 100px;
-    padding: 15px;
-    border: none;
-    margin: 10px;
-  cursor: pointer;
-    transition: background-image 0.3s ease-in-out;
-  
-  }
-  .btn:hover{
-    transform: scale(1.05);
-  
-  }
   /* footer style */
   footer {
     height: 280px;
@@ -282,9 +284,9 @@ body {
   #filterButton :hover{
     background-color: #767acf ;
   }
-  #pagination-container{
+  /* #pagination-container{
     display: flex;
     height: 20px;
     justify-content: center;
     gap: 5px;
-  }
+  } */
