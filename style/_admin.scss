@@ -18,8 +18,17 @@ $orange : #F64C72 ;
 	padding: 0;
 }
 
-body{
-    // background-color: #eceadd;
+body {
+	background-color: var(--gray5);
+	background-image: url("https://assets.codepen.io/416221/sales_bg.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	height: 100vh;
+	transition:
+		background-color var(--trans-dur),
+		color var(--trans-dur);
 }
 nav{
     padding: 10px 135px 10px 135px;
@@ -105,18 +114,7 @@ button {
 	color: var(--gray9);
 	font: 1em/1.5 "DM Sans", sans-serif;
 }
-body {
-	background-color: var(--gray5);
-	background-image: url("https://assets.codepen.io/416221/sales_bg.svg");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-	background-attachment: fixed;
-	height: 100vh;
-	transition:
-		background-color var(--trans-dur),
-		color var(--trans-dur);
-}
+
 strong {
 	font-weight: 500;
 }
@@ -659,9 +657,38 @@ time,
     .admin-container1{
         margin: 50px 20px 100px 20px;
         background-image:  linear-gradient(135deg, #091adb, #c04316);
-        height: 800px;
-        padding: 50px ;
+        height: fit-content;
+        padding: 20px 50px 50px 50px;
         border-radius: 20px;
+        h1{
+            font-family: $dm_serif;
+            font-size: 30px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #add-new-destination{
+            width: 150px;
+            height: 40px;
+            background-color: #5225f4;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            border: 2px solid $blue;
+            border-radius: 10px;
+            display: inline-block;
+            float: right;
+            margin-top: -70px;
+            margin-bottom: 20px;
+            margin-right: 50px;
+            padding: 4px 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in;
+        }
+        #add-new-destination:hover{
+            cursor: pointer;
+            transform: scale(1.05);
+        }
         .destination-list{
             display: flex;
             flex-direction: row;
@@ -669,7 +696,8 @@ time,
             row-gap: 100px;
             column-gap: 30px;
             .card{
-                background-color: $pink;
+                // background-color: transparent;
+                
                 border-radius: 20px;
                 height: 280px;
                 display: flex;
@@ -681,6 +709,8 @@ time,
                 }
                 .card-body{
                     background-color: $pink;
+                    font-family: $dm_serif;
+                    font-weight: bold;
                     border-radius: 0 0 20px 20px;
                     display: flex;
                     flex-direction: row;
@@ -688,15 +718,17 @@ time,
                     padding: 10px;
                     align-items: center;
                     .details{
+                        
                         display: flex;
                         flex-direction: column;
                         gap: 3px;
-                        .card-strikethroughprice {
-                            text-decoration: line-through;
-                            color: red;
+                        .card-country{
+                            color: #70316b;
+                            font-size: 20px;
                         }
-                        .card-offerPrice {
-                            color: red;
+                        .card-city{
+                            color: #863655 ;
+                            font-size: 16px;
                         }
                     }
                     .edit-buttons{
@@ -736,6 +768,35 @@ time,
         height: 800px;
         padding: 30px;
         border-radius: 20px;
+        h1{
+            font-family: $dm_serif;
+            font-size: 30px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #add-new-national-package{
+            width: 150px;
+            height: 40px;
+            background-color: #5225f4;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            border: 2px solid $blue;
+            border-radius: 10px;
+            display: inline-block;
+            float: right;
+            margin-top: -70px;
+            margin-bottom: 20px;
+            margin-right: 50px;
+            padding: 4px 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in;
+        }
+        #add-new-national-package:hover{
+            cursor: pointer;
+            transform: scale(1.05);
+        }
         .national-package-list{
             display: flex;
             flex-direction: row;
@@ -807,6 +868,35 @@ time,
         height: 800px;
         padding: 30px;
         border-radius: 20px;
+        h1{
+            font-family: $dm_serif;
+            font-size: 30px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #add-new-international-package{
+            width: 150px;
+            height: 40px;
+            background-color: #5225f4;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            border: 2px solid $blue;
+            border-radius: 10px;
+            display: inline-block;
+            float: right;
+            margin-top: -70px;
+            margin-bottom: 20px;
+            margin-right: 50px;
+            padding: 4px 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in;
+        }
+        #add-new-international-package:hover{
+            cursor: pointer;
+            transform: scale(1.05);
+        }
         .international-package-list{
             display: flex;
             flex-direction: row;

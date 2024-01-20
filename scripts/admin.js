@@ -1,5 +1,5 @@
 /// urls
-const baseURL = 'https://dummyapi2.onrender.com/';
+const baseURL = 'https://kushal-koder-api.onrender.com/';
 
 const destinationURL = `${baseURL}destinations`;
 const nationalPackageURL = `${baseURL}packagesNational`;
@@ -17,8 +17,7 @@ let nationalPackageList = document.querySelector(".national-package-list") ;
 let internationalPackageList = document.querySelector(".international-package-list") ;
 
 
-
-/// update Destintion form 
+/// add---update Destintion form 
 let destintionInputId = document.querySelector(".id") ;
 let destintionInputCity = document.querySelector(".city") ;
 let destintionInputCountry = document.querySelector(".country") ;
@@ -40,12 +39,33 @@ let packageInputImageURL = document.querySelector(".imageURL2") ;
 
 
 
-///// Destination update & add buttons
-let updateDestinationBtn = document.querySelector(".update-destination-btn") ;
+////////// Destination buttons
+let addNewDestinationBtn = document.querySelector("#add-new-destination") ;
 let addDestinationBtn = document.querySelector(".add-destination-btn") ;
-// ////// event listners
-updateDestinationBtn.addEventListener( "click" , updateDestination ) ;
-addDestinationBtn.addEventListener( "click" , addDestination ) ;
+/// for modal
+addNewDestinationBtn.classList.add("btn", "btn-info", "btn-lg") ;
+addNewDestinationBtn.setAttribute( "data-toggle","modal" ) ;
+addNewDestinationBtn.setAttribute( "data-target","#myModal" ) ;
+
+addDestinationBtn.addEventListener("click",()=>{
+
+})
+
+
+let addNewNationalPackageBtn = document.querySelector("#add-new-national-package") ;
+let addNewInternationalPackageBtn = document.querySelector("#add-new-international-package") ;
+
+///// event listners
+
+
+
+
+///// Destination update & add buttons
+// let updateDestinationBtn = document.querySelector(".update-destination-btn") ;
+// let addDestinationBtn = document.querySelector(".add-destination-btn") ;
+// // ////// event listners
+// updateDestinationBtn.addEventListener( "click" , updateDestination ) ;
+// addDestinationBtn.addEventListener( "click" , addDestination ) ;
 
 
 
@@ -63,33 +83,30 @@ addDestinationBtn.addEventListener( "click" , addDestination ) ;
 // updatePackageBtn.addEventListener( "click" , updatePackage ) ;
 // addPackageBtn.addEventListener( "click" , addPackage ) ;
 
-
-
+console.log("data");
 fetchData(`${destinationURL}`,`?_page=1&_limit=8`);
-fetchData(`${nationalPackageURL}`,`?_page=1&_limit=8`);
-fetchData(`${internationalPackageURL}`,`?_page=1&_limit=8`);
+// fetchData(`${nationalPackageURL}`);
+// fetchData(`${internationalPackageURL}`);
+// fetchData(`${destinationURL}`,`?_page=1&_limit=8`);
+// fetchData(`${nationalPackageURL}`,`?_page=1&_limit=8`);
+// fetchData(`${internationalPackageURL}`,`?_page=1&_limit=8`);
 async function fetchData(url,query="") {
     try {
         let userAuthToken = JSON.parse(localStorage.getItem("userAuthToken")) ;
         let userId = JSON.parse(localStorage.getItem("userId")) ;
-        const response = await fetch(`${url}${query}`,{
-            method : "GET" ,
-            headers : {
-                Authorization : `Bearer ${userAuthToken}`
-            }
-        });
+        const response = await fetch(`${url}${query}`);
         const data = await response.json();
         console.log(data);
-        if( url===destinationURL ){
+        // if( url===destinationURL ){
             displayDestinations(data);
-        }else if( url===nationalPackageURL ){
-            displayNationalPackages(data);
-        }else if( url===internationalPackageURL ){
-            displayInternationalPackages(data);
-        }
+        // }else if( url===nationalPackageURL ){
+        //     displayNationalPackages(data);
+        // }else if( url===internationalPackageURL ){
+        //     displayInternationalPackages(data);
+        // }
         
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Fetch Error:', error);
     }
 }
 
@@ -188,6 +205,7 @@ function createPackageCard(item,index){
 }
 
 function displayDestinations(destinations) {
+    console.log(destinations);
     destinationList.innerHTML = '';
     destinations.forEach( (item,index) => {
         const card = createDestinationsCard(item,index) ;
@@ -195,6 +213,12 @@ function displayDestinations(destinations) {
     });
 }
 function createDestinationsCard(item,index){
+
+// Country: "Ireland"
+// Description: "Charming Dublin, history, Temple Bar, Guinness, Irish culture, hospitality."
+// city: "Dublin"
+// id: 1
+
     let card = document.createElement("div") ;
     card.classList.add("card");
 
@@ -202,7 +226,7 @@ function createDestinationsCard(item,index){
     cardImg.classList.add("card-img");
   
     let img = document.createElement("img") ;
-    img.src = item.imageURL ; 
+    img.src = item.image ; 
 
     let cardBody = document.createElement("div") ;           
     cardBody.classList.add("card-body");
@@ -213,7 +237,7 @@ function createDestinationsCard(item,index){
   
     let country = document.createElement("p") ;
     country.classList.add("card-country");
-    country.innerText = item.country ;
+    country.innerText = item.Country ;
   
     let edit = document.createElement("button") ;
     edit.innerText = "Edit";
@@ -227,7 +251,7 @@ function createDestinationsCard(item,index){
       destintionInputCity.value = item.city ;
       destintionInputCountry.value = item.country ;
       destintionInputDescription.value = item.description ;
-      destintionInputImageURL.value = item.imageURL ;
+      destintionInputImageURL.value = item.image ;
     })
 
     let deleteBtn = document.createElement("button") ;
