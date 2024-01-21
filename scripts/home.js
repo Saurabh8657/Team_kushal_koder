@@ -22,35 +22,121 @@ let searchBtn = document.querySelector("#search-btn") ;
 searchBtn.addEventListener("click",()=>{
     let searchBySelect = document.querySelector("#searchBy") ;
     let searchInput = document.querySelector("#search") ;
-    fetchData(`${destinationURL}`,`?${searchBySelect.value}=${searchInput.value}&_page=1&_limit=10`)
+    fetchData(`${destinationURL}`,`?${searchBySelect.value}=${searchInput.value}&_page=1&_limit=6`)
+
+    // fetchData(`${nationalPackageURL}`,`?${searchBySelect.value}=${searchInput.value}&_page=1&_limit=10`)
 } ) ;
+
+
+//// for debouncing realtime searach 
+let searchInput = document.querySelector("#search") ;
+searchInput.addEventListener("input",()=>{
+    storedDebounceFunc();
+} ) ;
+
+
+
+function searchDebounce( fetchfun,delay){
+    let searchBySelect = document.querySelector("#searchBy") ;
+    // let searchInput = document.querySelector("#search") ;
+    let timer ;
+    return function(){
+        if(timer){
+            clearTimeout(timer) ;
+        }
+        timer = setTimeout( ()=>{ fetchfun(`${nationalPackageURL}?${searchBySelect.value}_like=${searchInput.value}&_page=1&_limit=6`) },delay )  ;
+    }
+}
+
+let storedDebounceFunc = searchDebounce(fetchData,1000) ;
 
 // let WavingBookCards = document.querySelector(".wave-up") ;
 // WavingBookCards.addEventListener( "click",()=>{
 //     window.location.href = "https://example.com/booking-page";
 // } )
+
 async function fetchData( url,query="" ) {
     try {
         const response = await fetch(`${url}${query}`);
+
+        let totalData = response.headers.get("X-Total-Count") ;
+        let limit = 6 ;
+        let totalPages = Math.ceil(totalData/limit) ;
+        console.log(totalData,totalPages) ; 
+
         const data = await response.json();
         console.log(data);
         appendData(data) ;
+
+        pagination( totalPages,limit,url,query ) ;
     } catch (error) {
         console.error('from fetchData :', error);
     }
 }
 
+/// for pagination
+function pagination( totalPages,limit,url,query ){
+   for(let i=1; i<=totalPages; i++){
+        let btn = document.createElement("button") ;
+        btn.classList.add("pagination-button") ;
+        btn.innerText = `${i}`;
+        btn.addEventListener("click",() => { 
+            let searchBySelect = document.querySelector("#searchBy") ;
+            let searchInput = document.querySelector("#search") ;
+            dynamicList.innerHTML = "";
+            
+            fetchData(`${nationalPackageURL}?${searchBySelect.value}_like=${searchInput.value}&_page=${i}&_limit=${limit}`)
+        } )  
+        dynamicListpages.append(btn) ;
+        console.log("hey"); 
+    }
+}
+
 let section2 = document.querySelector(".section2") ;
+let dynamicList = document.createElement("div");
+dynamicList.classList.add("dynamic-list") ;
+
+let dynamicListCard = document.createElement("div");
+dynamicListCard.classList.add("dynamic-list-card") ;
+
+let dynamicListpages = document.createElement("div");
+dynamicListpages.classList.add("dynamic-list-page") ;
 function appendData(data){
     section2.innerHTML = "";
-    let dynamicList = document.createElement("div");
-    dynamicList.classList.add("dynamic-list")
+    dynamicListCard.innerHTML = "";
+    dynamicListpages.innerHTML = "";
+    dynamicList.append( dynamicListCard, dynamicListpages )
     section2.append(dynamicList);
     data.forEach( (item,index) => {
         const card = createCard(item,index) ;
-        dynamicList.append(card) ;
+        setTimeout( ()=>{
+            dynamicListCard.append(card) ;
+        },500 )
     });
+    flag = true ;
 }
+
+///// infinite horizontal
+// let flag = true ;
+// page = 1 ;
+// dynamicList.addEventListener( "scroll",() => {
+//     let clientHeight = document.documentElement.clientLeft ;
+//     let scrollHeight = document.documentElement.scroll ;
+//     let scrollLeft = document.documentElement.scrollLeft ;
+//     console.log( scrollHeight, clientHeight, scrollLeft ) ;
+//     if( (scrollHeight-clientHeight) <= Math.ceil(scrollLeft) && flag ){
+//         console.log("reached bottom") ;
+//         page++;
+//         let searchBySelect = document.querySelector("#searchBy") ;
+//         let searchInput = document.querySelector("#search") ;
+//         // fetchfun(`${destinationURL}`,`?${searchBySelect.value}_like=${searchInput.value}&_page=${page}&_limit=6`)
+//         fetchfun(`${nationalPackageURL}`,`?${searchBySelect.value}_like=${searchInput.value}&_page=${page}&_limit=10`)
+//         flag = false ;
+//     }
+// } )
+
+
+
 
 function createCard(item,index){
     let card = document.createElement("div") ;
@@ -61,7 +147,7 @@ function createCard(item,index){
     cardImg.classList.add("card-img");
   
     let img = document.createElement("img") ;
-    img.src = item.image ; 
+    img.src = item.imageURL ; 
 
     let cardBody = document.createElement("div") ;           
     cardBody.classList.add("card-body");
@@ -98,3 +184,13 @@ function createCard(item,index){
     card.append( cardImg, cardBody ) ;
     return card ;
 }
+
+
+
+
+///// packages-card click redirect to packages 
+
+let packagesCard = document.querySelector(".packages-card") ;
+packagesCard.addEventListener( "click" , ()=>{
+    window.location.href = '';
+} )
