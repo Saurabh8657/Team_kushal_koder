@@ -106,14 +106,19 @@ searchByButton.addEventListener('click', async () => {
   
         if (selectedOption === 'city') {
           response = await fetch(`${baseURl}?city_like=${searchTerm}`);
+          res = await fetch(`${internationaURl}?city_like=${searchTerm}`);
         } else if (selectedOption === 'country') {
           response = await fetch(`${baseURl}?Country_like=${searchTerm}`);
+          res = await fetch(`${internationaURl}?Country_like=${searchTerm}`);
         }
   
-        if (response.ok) {
+        if (response.ok&& res.ok) {
           const data = await response.json();
+          const data2 = await res.json();
           console.log(data);
+          console.log(data2);
           appendData(data);
+          appendData2(data2);
         } else {
           console.log('Error fetching data:', response.status);
         }
@@ -126,9 +131,12 @@ searchByButton.addEventListener('click', async () => {
   });
   sortAtoZBtn.addEventListener("click",()=>{
     fetchData(`${baseURl}?_page=1&_limit=5`,`_sort=Price&_order=asc`);
+    fetchDataInternational(`${internationaURl}?_page=1&_limit=5`,`_sort=Price&_order=asc`);
+    
   })
   sortZtoABtn.addEventListener("click",()=>{
     fetchData(`${baseURl}?_page=1&_limit=5`,`_sort=Price&_order=desc`);
+    fetchDataInternational(`${internationaURl}?_page=1&_limit=5`,`_sort=Price&_order=desc`);
   })
 
   //International data //
@@ -216,40 +224,5 @@ function createCard(item,index) {
 
     return card;
 }
-// searchByButton.addEventListener('click', async () => {
-//     const selectedOption = searchBySelect.value;
-//     const searchTerm = searchByInput.value;
-  
-//     if (searchTerm !== '') {
-//       try {
-//         let response;
-  
-//         if (selectedOption === 'city') {
-//           response = await fetch(`${baseURl}?city_like=${searchTerm}`);
-//         } else if (selectedOption === 'country') {
-//           response = await fetch(`${baseURl}?Country_like=${searchTerm}`);
-//         }
-  
-//         if (response.ok) {
-//           const data = await response.json();
-//           console.log(data);
-//           appendData(data);
-//         } else {
-//           console.log('Error fetching data:', response.status);
-//         }
-//       } catch (error) {
-//         console.error('Error:', error);
-//       }
-//     } else {
-//       console.log('Please enter a search term.');
-//     }
-//   });
-//   sortAtoZBtn.addEventListener("click",()=>{
-//     fetchData(`${baseURl}?_page=1&_limit=5`,`_sort=Price&_order=asc`);
-//   })
-//   sortZtoABtn.addEventListener("click",()=>{
-//     fetchData(`${baseURl}?_page=1&_limit=5`,`_sort=Price&_order=desc`);
-//   })
-
  fetchData(`${baseURl}?_page=${1}&_limit=${limit}`);
  fetchDataInternational(`${internationaURl}?_page=${1}&_limit=${limit}`)

@@ -216,29 +216,29 @@ body {
   
   /* footer style */
   footer {
-    height: auto;
+    height: 250px;
     width: 100%;
     background: linear-gradient(to right, #0e1837 0%, #0a1229 70%, #31213b 100%);
-    padding: 50px 135px 30px 135px;
-    margin-top: 100px;
-    border-radius: 30px 30px 0 0;
+    /* padding: 50px 135px 30px 135px; */
+    margin-top: 30px;
+    /* border-radius: 30px 30px 0 0; */
     display: flex;
     flex-direction: column;
   }
-  footer .footer1 {
+   .footer1 {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin-top: 20px;
     letter-spacing: 2px;
   }
-  footer .footer1 h1 {
+   .footer1 h1 {
     font-family: "Roboto", sans-serif;
     text-decoration: none;
     font-size: 30px;
     font-weight: 700;
-    margin-top: -5px;
+    /* margin-top: 5px; */
     background-image: linear-gradient(135deg, #c80909, #c04316);
     background-clip: text;
     color: transparent;
@@ -246,7 +246,7 @@ body {
   footer .footer1 h1:hover {
     background-image: linear-gradient(135deg, #9f0692, #c80909);
   }
-  footer .footer1 ul {
+  .footer1 ul {
     display: flex;
     flex-direction: row;
     gap: 40px;
@@ -254,7 +254,7 @@ body {
     font-family: "Montserrat", sans-serif;
     margin-left: 60px;
   }
-  footer .footer1 ul li {
+   .footer1 ul li {
     list-style: none;
   }
   footer .footer1 ul a {
@@ -278,12 +278,12 @@ body {
     color: white;
   }
   footer .socials .fa-brands {
-    width: 40px;
-    height: 40px;
-    padding: 17px 25px 10px 10px;
-    border: 2px solid white;
     border-radius: 50%;
-    text-align: center;
+    border: 2px solid;
+    border-radius: 50%;
+    padding: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
   
   @media screen and (min-width: 100px) and (max-width: 1150px) {
