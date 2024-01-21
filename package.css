@@ -1,78 +1,133 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #d6d6d7;
+    /* background-color: #d6d6d7; */
   }
-  nav {
-    padding: 0px 135px 0px 135px; 
+  .nav {
+    width: 100%;
+    background-color: #2F2FA2;
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav > .nav-header {
+    flex: 0.95;
+    padding-left: 1rem;
+  }
+  
+  .nav > .nav-header > .nav-title {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    height: 100px;
-    background: linear-gradient(to bottom, #eceadd 0%, #eceadd 100%);
-  }
-  
-  nav .logo-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 40px;
-    font-family: sans-serif;
+    gap: 20px;
+    margin-top: -5px;
     letter-spacing: 2px;
+    font-size: 18px;
+    color: #fff;
   }
   
-  nav .logo-div h1 {
+  .nav > .nav-list {
+    display: flex;
+    gap: 50px;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  
+  .nav > .nav-list > li {
+    list-style-type: none;
+  }
+  
+  .nav > .nav-list > li:hover {
+    animation: wave 0.5s 0s infinite;
+  }
+  
+  .nav > .nav-list > li a {
     text-decoration: none;
-    background-image: linear-gradient(135deg, #091adb, #c04316);
-    background-clip: text;
-    color: transparent;
-    font-size: 20px;
+    color: #efefef;
+    cursor: pointer;
   }
   
-  nav .logo-div h1:hover {
-    background-image: linear-gradient(135deg, #9f0692, #c80909);
+  .nav > #nav-check {
+    display: none;
   }
   
-  nav .logo-div .logo-img {
+  .logo-img {
     width: 80px;
     height: 80px;
   }
   
-  nav .nav-tags {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 50px;
-    font-family: sans-serif;
-    font-size: 18px;
-    margin-top: 20px;
+  @media (max-width: 480px) {
+    .nav {
+      padding: 1rem;
+    }
+    .nav > .nav-btn {
+      display: inline-block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding-top: 0.2rem;
+    }
+    .nav > .nav-btn > label {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      padding: 13px;
+    }
+    .nav > .nav-btn > label > span {
+      display: block;
+      width: 25px;
+      height: 10px;
+      border-top: 2px solid #eee;
+    }
+    .nav > .nav-list {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      height: 0;
+      transition: all 0.3s ease-in;
+      top: 40px;
+      left: 0;
+      overflow: hidden;
+    }
+    .nav > .nav-list > li {
+      width: 100%;
+      margin-top: 1.5rem;
+    }
+    .nav > #nav-check:checked ~ .nav-list {
+      height: calc(100vh - 50px);
+    }
   }
-  
-  nav .nav-tags li {
-    list-style: none;
-  }
-  
-  nav .nav-tags li:hover {
-    animation: wave 0.5s 0s infinite;
-  }
-  
-  nav .nav-tags a {
-    text-decoration: none;
-  }
-  
   @keyframes wave {
     0%, 100% {
       transform: translate(0, 0);
     }
     25% {
-      transform: translateY(-2px);
+      transform: translateY(-5px);
     }
     75% {
-      transform: translateY(-2px);
+      transform: translateY(-5px);
     }
   }
-  
+  @media only screen and (max-width: 1150px) {
+    nav {
+      padding: 0px 5% 0px 5%;
+    }
+    nav .logo-div h1 {
+      font-size: 18px;
+    }
+    nav .logo-div .logo-img {
+      width: 50px;
+      height: 50px;
+    }
+    nav .nav-tags {
+      gap: 15px;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  }
   
   .container {
     display: flex;
@@ -105,6 +160,10 @@ body {
   vertical-align: top;
   text-align: left;
   position: relative;
+  background-color: #d6d6d7; 
+}
+.curve{
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 768px) {
@@ -166,16 +225,15 @@ body {
   
   /* footer style */
   footer {
-    height: 280px;
+    height: auto;
     width: 100%;
     background: linear-gradient(to right, #0e1837 0%, #0a1229 70%, #31213b 100%);
-    /* padding: 100px 135px 0px 135px; */
+    padding: 50px 135px 30px 135px;
+    margin-top: 100px;
+    border-radius: 30px 30px 0 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
   }
-  
   footer .footer1 {
     display: flex;
     flex-direction: row;
@@ -184,65 +242,57 @@ body {
     margin-top: 20px;
     letter-spacing: 2px;
   }
-  
   footer .footer1 h1 {
-    font-family: sans-serif;
+    font-family: "Roboto", sans-serif;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 30px;
     font-weight: 700;
-    background-image: linear-gradient(135deg, #091adb, #c04316);
+    margin-top: -5px;
+    background-image: linear-gradient(135deg, #c80909, #c04316);
     background-clip: text;
     color: transparent;
   }
-  
   footer .footer1 h1:hover {
     background-image: linear-gradient(135deg, #9f0692, #c80909);
   }
-  
   footer .footer1 ul {
     display: flex;
     flex-direction: row;
     gap: 40px;
     font-size: 16px;
-    font-family: sans-serif;
+    font-family: "Montserrat", sans-serif;
     margin-left: 60px;
   }
-  
   footer .footer1 ul li {
     list-style: none;
   }
-  
   footer .footer1 ul a {
     text-decoration: none;
     color: white;
   }
-  
   footer .footer1 div {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    font-family: sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 16px;
     color: white;
   }
-  
   footer .socials {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
     gap: 20px;
     margin-top: 20px;
     color: white;
   }
-  
-  footer .socials img {
+  footer .socials .fa-brands {
     width: 40px;
     height: 40px;
-    transition: all 0.3s ease-in-out;
-    padding: 10px;
-    border: 1px solid white;
-    border-radius: 8px;
+    padding: 17px 25px 10px 10px;
+    border: 2px solid white;
+    border-radius: 50%;
+    text-align: center;
   }
   
   @media screen and (min-width: 100px) and (max-width: 1150px) {
@@ -254,8 +304,10 @@ body {
       font-size: 50px; /* Adjust the font size for smaller screens */
     }
   
-    .container-card {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    #container-card {
+      grid-template-columns: (auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-left: 100px;
     }
   }
   .filter{
@@ -264,7 +316,7 @@ body {
     gap: 4px;
   }
   .display{
-    background-image: url("/mock-server-app/packages/logo/displayRegion.avif");
+    background-image: url('/img/displayRegion.avif');
     width: 100%; 
     height: 250px; 
     background-size: cover; 

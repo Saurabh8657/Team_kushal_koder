@@ -19,14 +19,14 @@ async function fetchData(){
     }
 }
 function appendData(data){
-    data.forEach((item)=>{
-        let card = createCard(item);
+    data.forEach((item,index)=>{
+        let card = createCard(item,index);
         container.append(card);
     })
    
 }
 
-function createCard(item) {
+function createCard(item,index) {
     let card = document.createElement("div");
     card.classList.add("card");
 
@@ -61,6 +61,9 @@ function createCard(item) {
     let bookNow = document.createElement("button");
     bookNow.classList.add("btn");
     bookNow.textContent = "Book Now";
+     bookNow.addEventListener("click",()=>{
+        window.location.href = 'payment.html';
+     });
 
     titlePriceContainer.append(cardTitle, price);
 
@@ -71,7 +74,10 @@ function createCard(item) {
 
     return card;
 }
-
+// let bookNowBtn = document.querySelector(".btn") ;
+// bookNowBtn.addEventListener( "click" , ()=>{
+//     window.location.href = 'payment.html';
+// } )
 window.addEventListener('scroll', () => {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
     console.log(scrollHeight,scrollTop,clientHeight)
