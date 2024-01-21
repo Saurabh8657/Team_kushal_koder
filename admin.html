@@ -20,23 +20,32 @@
 </head>
 <body>
 
-    <nav>
-        <div class="logo-div">
+    <nav class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+          <div class="nav-title">
             <a href="#">
-                <img src="/img/logo.gif" alt="logo-img" class="logo-img">
+              <img src="/img/logo.gif" alt="logo-img" class="logo-img">
             </a>
             <h1 class="logo">Globe Gliders</h1>
+          </div>
         </div>
-        <ul class="nav-tags">
-            <li> <a href="index.html">Home</a> </li>
-            <li> <a href="#">Packages</a> </li>
-            <li> <a href="#">Destinations</a> </li>
-            <li> <a href="#"> About Us </a> </li>
-            <li><a href="admin.html"> Dashboard </a></li>
-            <!-- <li> <a href="#"> <i class="fa-solid fa-user"></i>  Sign In</a> </li> -->
-            <!-- <li> <a href="#"> <i class="fa-solid fa-user-plus"></i>  Sign Up</a> </li> -->
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+        
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="destination.html">Destinations</a></li>
+          <li><a href="admin.html">Admin</a></li>
+          <li><a href="signin.html"><i class="fa-solid fa-user"></i> Sign In/Sign Up</a></li>
         </ul>
-    </nav>
+      </nav>
     <svg display="none">
         <symbol id="calendar" viewBox="0 0 24 24">
             <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
