@@ -17,7 +17,9 @@
             <a href="#">
                 <img src="./logo .gif" alt="">
             </a>
-            <h2>Globe Glider</h2>
+            <a href="#">
+                <h2>Globe Glider</h2>
+            </a>
         </div>
     </nav>
     <div class="content-container">
@@ -27,18 +29,32 @@
     
         <div class="container">
             <div class="forms">
-                <div class="form login">
+                <div class="formt login">
                     <span class="title">Login</span>
 
-                    <form action="#">
-                        <div class="input-field">
-                            <input type="text" placeholder="Enter your email" required>
-                            <i class="uil uil-envelope icon"></i>
+                    <form id ="login-form" action="http://localhost:3000/user" method="GET">
+                        
+                        <div class="field enter-email">
+                            <div class="input-field">
+                                <input type="email" placeholder="Enter your email" class="log-email">
+                                <i class="uil uil-envelope icon"></i>
+                            </div>
+                            <span class="error name-error">
+                                <i class="fa-solid fa-circle-exclamation error-icon"></i>
+                                <p class="error-text">Email can't be blank</p>
+                            </span>
                         </div>
-                        <div class="input-field">
-                            <input type="password" placeholder="Enter your password" required>
-                            <i class="uil uil-lock icon"></i>
-                            <i class="uil uil-eye-slash showHidePw"></i>
+
+                        <div class="field enter-password">
+                            <div class="input-field">
+                                <input type="password" placeholder="Enter your password" class="log-password password">
+                                <i class="uil uil-lock icon"></i>
+                                <i class="uil uil-eye-slash showHidePw"></i>
+                            </div>
+                            <span class="error name-error">
+                                <i class="fa-solid fa-circle-exclamation error-icon"></i>
+                                <p class="error-text">Entered password is invalid</p>
+                            </span>
                         </div>
 
                         <div class="checkbox-text">
@@ -51,7 +67,7 @@
                         </div>
 
                         <div class="input-field button">
-                            <input type="button" value= "Login">
+                            <input type="submit" value= "Login">
                         </div>
                     </form>
 
@@ -64,41 +80,63 @@
 
                 <!-- Signup form  -->
 
-                <div class="form signup">
+                <div class="formt signup">                  
                     <span class="title">Signup</span>
-
-                    <form action="#">
-                        <div class="input-field">
-                            <input type="text" placeholder="Enter your name" required>
-                            <i class="uil uil-user icon"></i>
+                    <form id ="signin-form" action="http://localhost:3000/user" method="POST">
+                        <div class="field name-field">
+                            <div class="input-field">
+                                <input type="text" placeholder="Enter your name" class="uName">
+                                <i class="uil uil-user icon"></i>
+                            </div> 
+                            <span class="error name-error">
+                                <i class="fa-solid fa-circle-exclamation error-icon"></i>
+                                <p class="error-text">Please enter a valid name</p>
+                            </span>
+                        </div>                     
+                        <div class="field email-field">
+                            <div class="input-field">
+                                <input type="email" placeholder="Enter your email" class ="email">
+                                <i class="uil uil-envelope icon"></i>
+                            </div>
+                            <span class="error email-error">
+                                <i class="fa-solid fa-circle-exclamation error-icon"></i>
+                                <p class="error-text">Please enter a valid email</p>
+                            </span>
                         </div>
-                        <div class="input-field">
-                            <input type="text" placeholder="Enter your email" required>
-                            <i class="uil uil-envelope icon"></i>
+                        <div class="field create-password">
+                            <div class="input-field">
+                                <input type="password" class ="password" placeholder="Enter your password">
+                                <i class="uil uil-lock icon"></i>
+                                <i class="uil uil-eye-slash showHidePw"></i>
+                            </div>
+                            <span class="error password-error">
+                                <i class="fa-solid fa-circle-exclamation error-icon"></i>
+                                <p class="error-text">
+                                    Please enter atleast 8 character with number, symbol, small and capital letter.
+                                </p>
+                            </span>
                         </div>
-                        <div class="input-field">
-                            <input type="password" class="password" placeholder="Enter your password" required>
-                            <i class="uil uil-lock icon"></i>
-                            <i class="uil uil-eye-slash showHidePw"></i>
+                        <div class="field confirm-password">
+                            <div class="input-field">
+                                <input type="password" class="cPassword password" placeholder="Confirm your password">
+                                <i class="uil uil-lock icon"></i>
+                                <i class="uil uil-eye-slash showHidePw"></i>
+                            </div>
+                            <span class="error cPassword-error">
+                                <i class="fa-solid fa-circle-exclamation error-icon"></i>
+                                <p class="error-text">Password don't match</p>
+                            </span>
                         </div>
-                        <div class="input-field">
-                            <input type="password" class="password" placeholder="Confirm your password" required>
-                            <i class="uil uil-lock icon"></i>
-                            <i class="uil uil-eye-slash showHidePw"></i>
-                        </div>
-
                         <div class="checkbox-text">
                             <div class="checkbox-content">
                                 <input type="checkbox" id="termCon">
                                 <label for="termCon" class="text">I accepted all terms and conditons</label>
                             </div> 
                         </div>
-
                         <div class="input-field button">
-                            <input type="button" value= "Signup">
+                            <input type="submit" value= "Signup">
                         </div>
                     </form>
-
                     <div class="login-signup">
                         <span class="text">Already a member?
                             <a href="#" class="text login-link">Login Now</a>
