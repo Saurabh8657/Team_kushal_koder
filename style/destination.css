@@ -185,6 +185,11 @@ h2 {
   margin: 20px;
   padding: 10px;
   font-size: 16px;
+  background-image: linear-gradient(90deg, #e11179 0, #610dd7 51%, #e70fc3);
+  border-radius: 40px;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 .card {
@@ -214,6 +219,11 @@ h2 {
   margin: 20px;
   padding: 10px;
   font-size: 16px;
+  background-image: linear-gradient(90deg, #e11179 0, #610dd7 51%, #e70fc3);
+  border-radius: 40px;
+  color: white;
+  border:none;
+   cursor: pointer;
 }
 
 /* footer style */
@@ -297,42 +307,48 @@ footer .socials img {
   border-radius: 8px;
 }
 
-@media screen and (min-width: 100px) and (max-width: 1150px) {
-
+@media only screen and (min-width: 100px) and (max-width: 1150px) {
   nav {
-    padding: 0px 10px; /* Adjust padding for smaller screens */
+    padding: 0 10px;
   }
 
   nav .logo-div {
-    margin-top: 10px; /* Adjust margin for smaller screens */
+    margin-top: 10px;
   }
 
   nav .nav-tags {
-    gap: 10px; /* Adjust gap for smaller screens */
-    font-size: 12px; /* Adjust font size for smaller screens */
-    margin-top: 5px; /* Adjust margin for smaller screens */
+    gap: 10px;
+    margin-top: 5px;
+  }
+
+  .container {
+    height: 150px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .heading {
+    font-size: 16px;
+    padding-top: 3px;
   }
 
   .container-card {
-    padding: 5px; /* Adjust padding for smaller screens */
+    padding: 5px;
   }
 
-  .card img {
-    height: 150px; /* Adjust height for smaller screens */
+  .cards img {
+    height: 120px;
   }
 
-  .card-title {
-    font-size: 16px; /* Adjust font size for smaller screens */
+  .cards-title {
+    font-size: 16px;
   }
 
   .btn {
-    width: 60px; /* Adjust width for smaller screens */
-    padding: 8px; /* Adjust padding for smaller screens */
-    margin: 3px; /* Adjust margin for smaller screens */
-  }
-
-  footer {
-    padding: 10px; /* Adjust padding for smaller screens */
+    width: 60px;
+    padding: 8px;
   }
 }
 
