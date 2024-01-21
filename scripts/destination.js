@@ -40,9 +40,7 @@ fetchData(`${nationalPackageURL}`,`?_page=1&_limit=10`);
           console.error('Fetch Error:', error);
       }
   }
-  loadMoreNationalButton.addEventListener('click', function () {
-    fetchAndAppendData(nationalPackageURL, nationalCurrentPage);
-  });
+  
 
   async function fetchAndAppendData(url, page) {
     try {
@@ -65,6 +63,10 @@ fetchData(`${nationalPackageURL}`,`?_page=1&_limit=10`);
       console.error('Fetch Error:', error);
     }
   }
+  loadMoreNationalButton.addEventListener('click', function () {
+    fetchAndAppendData(nationalPackageURL, nationalCurrentPage);
+  });
+  
 
   
   function displayNationalPackages(packages){
@@ -160,7 +162,18 @@ function createDestinationsCard(item,index){
   card.append( cardImg,cardBody ) ;
   return card ;
 }
-fetchAndAppendData(nationalPackageURL, nationalCurrentPage);
+
+const horizontalScrollContainer = document.getElementById('horizontal-scroll');
+
+horizontalScrollContainer.addEventListener('scroll', function () {
+  // Check if the user has scrolled to the right by comparing scrollLeft with scrollWidth
+  if (horizontalScrollContainer.scrollLeft + horizontalScrollContainer.clientWidth >= horizontalScrollContainer.scrollWidth) {
+    // Fetch and append more data
+    fetchAndAppendData(nationalPackageURL, nationalCurrentPage);
+  }
+});
+
+
 
     
 
