@@ -204,13 +204,13 @@ function createPackageCard(item,index){
         destintionInputCountry.value =  "" ;         
         destintionInputDescription.value =  "" ; 
         destintionInputImageURL.value =   "" ;   
-      packageInputId.value =`Id : ${item.id}`   ;
-      packageInputCity.value = `city : ${item.city}` ;
-      packageInputCountry.value = `Country : ${item.Country}` ;
-      packageInputPackage.value = `Package : ${item.Package}` ;
-      packageInputPrice.value = `Price : ${item.Price}` ;
-      packageInputOfferPrice.value = `OfferPrice : ${item.OfferPrice}` ;
-      packageInputImageURL.value = `imageURL : ${item.imageURL}` ;
+      packageInputId.value = item.id  ;
+      packageInputCity.value = item.city ;
+      packageInputCountry.value = item.Country ;
+      packageInputPackage.value = item.Package ;
+      packageInputPrice.value = item.Price ;
+      packageInputOfferPrice.value = item.OfferPrice ;
+      packageInputImageURL.value = item.imageURL ;
     })
 
     let deleteBtn = document.createElement("button") ;
@@ -269,11 +269,11 @@ function createDestinationsCard(item,index){
     edit.setAttribute( "data-target","#myModal" ) ;
 
     edit.addEventListener("click",() => {
-      destintionInputId.value = `Id : ${item.id}`   ;
-      destintionInputCity.value = `city : ${item.city }` ;
-      destintionInputCountry.value = `Country : ${item.Country}`  ;
-      destintionInputDescription.value = `Description : ${item.Description}`  ;
-      destintionInputImageURL.value = `imageURL : ${item.image}`  ;
+      destintionInputId.value = item.id   ;
+      destintionInputCity.value = item.city ;
+      destintionInputCountry.value = item.Country ;
+      destintionInputDescription.value = item.Description ;
+      destintionInputImageURL.value = item.image ;
     })
 
     let deleteBtn = document.createElement("button") ;

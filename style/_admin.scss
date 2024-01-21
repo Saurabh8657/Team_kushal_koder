@@ -1088,10 +1088,8 @@ time,
     font-weight: 700;
 }
 .updateForm {
-    max-width: 400px;
-    margin: auto;
-    // padding: 20px;
-    
+    max-width: 600px;
+    margin: 20px;
     background-color: #f7f7f7;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -1101,10 +1099,13 @@ time,
         color: black;
         width: 100%;
         padding: 10px;
-        margin-bottom: 15px;
+        margin-bottom: 8px;
         border: 1px solid #ccc;
         border-radius: 4px;
         box-sizing: border-box;
+    }
+    label{
+        color: black;
     }
     textarea {
         resize: vertical;
