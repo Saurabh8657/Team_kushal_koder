@@ -141,15 +141,6 @@ body {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 4px;
   }
-  h1 {
-    font-size: 70px;
-    margin: 0;
-    text-align: left;
-    background: linear-gradient(to right, #151515, #454444);
-    -webkit-background-clip: text;
-    color: transparent;
-    font-family: 'Dela Gothic One', sans-serif;
-  }
  
 /* Styles for cards */
 .card {
@@ -336,9 +327,37 @@ body {
   #filterButton :hover{
     background-color: #767acf ;
   }
-  /* #pagination-container{
+  .sort{
     display: flex;
-    height: 20px;
     justify-content: center;
-    gap: 5px;
-  } */
+    align-items: center;
+    gap: 50px;
+    margin-top: 10px;
+  }
+  #sort-high-to-low,#sort-low-to-high{
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    margin-top: auto; 
+    border-radius: 20px;
+  }
+  .paginate,.paginate2{
+    /* background-color: #4CAF50; */
+    /* color: white; */
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+  }
+  .national,.International{
+    margin-left: 30px;
+    margin-top: 10px;
+    opacity: 90%;
+  }
+  .pagination-wrapper2,.pagination-wrapper{
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+   margin-top: 20px;
+  }
