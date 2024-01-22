@@ -16,7 +16,7 @@ body {
 
 .logo-container {
     display: flex;
-    margin-left: 25px;
+    margin: 15px 0px 0px 100px;
 }
 
 .logo-container img {
