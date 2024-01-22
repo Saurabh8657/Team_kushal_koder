@@ -14,8 +14,8 @@ HTML | CSS | SASS | Bootstrap || JavaScript
 
 ### Project Link
 
-- Web page link: 
-- Github link: https://github.com/Saurabh8657/Team_Digital_Galaxy
+- Web page link: https://team-kushal-koder.vercel.app/
+- Github link: https://github.com/Saurabh8657/Team_kushal_koder
 
 Glimpse of the web page 
 <img src="/Page_Look/home1.png" alt="" />
