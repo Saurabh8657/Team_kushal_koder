@@ -1771,10 +1771,9 @@ footer .socials .fa-brands {
 }
 
 .updateForm {
-  max-width: 400px;
-  margin: auto;
+  max-width: 600px;
   background-color: #f7f7f7;
-  border-radius: 8px;
+  border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .updateForm input,
@@ -1782,11 +1781,14 @@ footer .socials .fa-brands {
 .updateForm select {
   color: black;
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
+  padding: 5px;
+  margin-bottom: 8px;
+  border: 1px solid #2f2b2b;
   border-radius: 4px;
   box-sizing: border-box;
+}
+.updateForm label {
+  color: black;
 }
 .updateForm textarea {
   resize: vertical;
