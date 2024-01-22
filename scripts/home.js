@@ -62,11 +62,7 @@ function searchDebounce( fetchfun,delay){
 let storedDebounceFunc = searchDebounce(fetchData,500) ;
 
 
-///  locatins click redirect to destination 
-// let WavingBookCards = document.querySelector(".wave-up") ;
-// WavingBookCards.addEventListener( "click",()=>{
-//     window.location.href = "destination.html";
-// } )
+
 
 ///// packages-card click redirect to packages 
 
@@ -159,6 +155,11 @@ function createCard(item,index){
     let card = document.createElement("div") ;
     card.classList.add("card");
     card.classList.add("wave-up");
+
+    ///  locatins click redirect to destination 
+    card.addEventListener( "click",()=>{
+        window.location.href = "destination.html";
+    } )
 
     let cardImg = document.createElement("div") ;
     cardImg.classList.add("card-img");
